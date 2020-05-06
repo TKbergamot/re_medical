@@ -53,6 +53,18 @@
 
 ## 設計書
 
+    - テーブル設計書
+        - https://docs.google.com/spreadsheets/d/1seKrgDkZnx8hNorRECNVUzoCJ4w8_XbkT62ykcK496g/edit?usp=sharing
+
+    - ワイヤーフレーム
+        - https://drive.google.com/file/d/1tgN3Zp-AucZibe14R2QLSMybQ4THndxO/view?usp=sharing
+
+    - ER図
+        - https://drive.google.com/file/d/1J_PKSHTV0twl-b2jUnv1wZ63dFncmOkv/view?usp=sharing
+
+    - アプリケーション詳細設計
+        - https://docs.google.com/spreadsheets/d/1QIJFU4ST-jugQv7CA49oTX-xBRqAzsrBxv0XOsQqxI8/edit?usp=sharing
+
 ### 機能一覧
 
-<https://docs.google.com/spreadsheets/d/1r2RnuaQ4GE1ohMG_LZdFukPFguCZQfv5UEEejXgR_Gg/edit?usp=sharing>
+    - https://docs.google.com/spreadsheets/d/1r2RnuaQ4GE1ohMG_LZdFukPFguCZQfv5UEEejXgR_Gg/edit?usp=sharing
