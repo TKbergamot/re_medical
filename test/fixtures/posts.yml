@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  refferal: MyString
+  desease_name: MyString
+  details: MyString
+  patient: one
+  department: one
+
+two:
+  refferal: MyString
+  desease_name: MyString
+  details: MyString
+  patient: two
+  department: two
