@@ -10,6 +10,14 @@
   </head>
 
   <body>
+  <% if doctor_signed_in? %>
+    <%= render '/layouts/doctor_header' %>
+  <% elsif patient_signed_in? %>
+    <%= render '/layouts/patient_header'%>
+  <% else %>
+    <%= render '/layouts/guest_header'%>
+  <% end %>
     <%= yield %>
+    <%= render '/layouts/footer' %>
   </body>
 </html>
