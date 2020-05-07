@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2020_05_06_124508) do
 
   create_table "departments", force: :cascade do |t|
-    t.integer "name"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -113,7 +113,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_124508) do
   create_table "posts", force: :cascade do |t|
     t.string "refferal"
     t.string "desease_name"
-    t.string "details"
+    t.string "detail"
     t.integer "patient_id"
     t.integer "department_id"
     t.datetime "created_at", null: false

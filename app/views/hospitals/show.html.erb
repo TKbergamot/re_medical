@@ -1,2 +1,13 @@
-<h1>Hospitals#show</h1>
-<p>Find me in app/views/hospitals/show.html.erb</p>
+<h1>病院詳細</h1>
+<p><%= @hospital.name %></p>
+<p><%= @hospital.name_kana %></p>
+<p><%= @hospital.founder %></p>
+<p><%= @hospital.founder_kana %></p>
+<p><%= @hospital.administer %></p>
+<p><%= @hospital.administer_kana %></p>
+<p><%= @hospital.post_code %></p>
+<p><%= @hospital.address %></p>
+<p><%= @hospital.phone_number %></p>
+<p><%= link_to @hospital.homepage, @hospital.homepage %></p>
+<p><%= @hospital.description %></p>
+<p><%= image_tag @hospital.image.to_s %></p>

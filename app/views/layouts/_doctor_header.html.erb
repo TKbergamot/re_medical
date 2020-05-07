@@ -1,4 +1,9 @@
+<%= link_to root_path do %>Re:medical<% end %>
 <%= link_to posts_path do %>投稿一覧<% end %>
-<%= link_to hospital_path(current_doctor) do %>所属病院ページ<% end %>
+<% if current_doctor.hospital_id.present? %>
+  <%= link_to hospital_path(current_doctor.hospital_id) do %>所属病院<% end %>
+<% else %>
+  <%= link_to new_hospital_path do %>所属病院登録<% end %>
+<% end %>
 <%= link_to doctor_path(current_doctor) do %>マイページ<% end %>
 <%= link_to destroy_doctor_session_path, method: :delete do %>ログアウト<% end %>

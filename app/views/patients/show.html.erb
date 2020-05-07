@@ -1,2 +1,10 @@
-<h1>Patients#show</h1>
-<p>Find me in app/views/patients/show.html.erb</p>
+<h1>マイページ</h1>
+
+<p><%= current_patient.family_name %></p>
+<p><%= current_patient.first_name %></p>
+<p><%= current_patient.family_name_kana %></p>
+<p><%= current_patient.first_name_kana %></p>
+<p><%= current_patient.date_of_birth %></p>
+<p><%= current_patient.gender %></p>
+
+<%= link_to new_post_path do %>新規投稿<% end %>

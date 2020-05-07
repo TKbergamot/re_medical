@@ -1,2 +1,43 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<h1>投稿詳細</h1>
+
+<p><%= @post.desease_name %></p>
+<p><%= @post.detail %></p>
+<% @post.refferal.each do |r| %>
+  <%= image_tag r.to_s %>
+<% end %>
+<% if doctor_signed_in? %>
+  <%= form_with model: Opinion.new, url: opinions_path, local: true do |f| %>
+    <p>内容<%= f.text_field :content %></p>
+    <%= f.hidden_field :post_id, value: @post.id %>
+  <%= f.submit '送信' %>
+  <% end %>
+<% end %>
+
+<% @opinions.each do |opinion| %>
+  <p><%= opinion.doctor.email %></p>
+  <p><%= opinion.content %></p>
+  <% opinion.doctor_comments.each do |doctor_comment| %>
+    <p><%= doctor_comment.doctor.email%></p>
+    <p><%= doctor_comment.content %></p>
+  <% end %>
+  <% opinion.patient_comments.each do |patient_comment| %>
+    <p><%= patient_comment.patient.email%></p>
+    <p><%= patient_comment.content %></p>
+  <% end %>
+  <% if doctor_signed_in? %>
+    <%= form_with model: DoctorComment.new, url: doctor_comments_path, local: true do |c| %>
+      <p>内容<%= c.text_field :content %></p>
+      <%= c.hidden_field :opinion_id, value: opinion.id %>
+      <%= c.submit '送信' %>
+    <% end %>
+  <% elsif patient_signed_in? %>
+    <%= form_with model: PatientComment.new, url: patient_comments_path, local: true do |c| %>
+      <p>内容<%= c.text_field :content %></p>
+      <%= c.hidden_field :opinion_id, value: opinion.id %>
+      <%= c.submit '送信' %>
+    <% end %>
+  <% end %>
+<% end %>
+<% (DoctorComment.all + PatientComment.all).sort_by{|record| record.created_at}.each do |com| %>
+  <p><%= com.content %></p>
+<% end %>
