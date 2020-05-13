@@ -16,6 +16,18 @@ class OpinionsController < ApplicationController
   end
 
   def edit
+    @opinion = Opinion.find(params[:id])
+  end
+
+  def update
+    @opinion = Opinion.find(params[:id])
+    @opinion.update(opinion_params)
+    redirect_to post_path(@opinion.post_id)
+  end
+
+  def destroy
+    opinion = Opinion.find(params[:id])
+    opinion.destroy
   end
 
   private

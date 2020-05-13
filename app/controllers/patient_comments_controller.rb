@@ -16,6 +16,18 @@ class PatientCommentsController < ApplicationController
   end
 
   def edit
+    @patient_comment = PatientComment.find(params[:id])
+  end
+
+  def update
+    @patient_comment = PatientComment.find(params[:id])
+    @patient_comment.update(patient_comment_params)
+    redirect_to post_path(@patient_comment.opinion.post_id)
+  end
+
+  def destroy
+    patient_comment = PatientComment.find(params[:id])
+    patient_comment.destroy
   end
 
   private

@@ -4,7 +4,47 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :family_name %>
+    <%= f.text_field :family_name, autofocus:true, autocomplete: "family_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name, autocomplete: "first_name" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name_kana %>
+    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :first_name_kana %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :date_of_birth %>
+    <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), autocomplete: "date_of_birth" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :gender %>
+    <%= f.select :gender, [['男性', 0],['女性', 1]], autocomplete: "gender" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :registration_number %>
+    <%= f.text_field :registration_number, autocomplete: "registration_number" %>
+  </>
+
+  <div class="field">
+    <%= f.label :registration_date %>
+    <%= f.date_select :registration_date, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), autocomplete: "registration_date" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email %>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
@@ -12,12 +52,12 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %>
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 

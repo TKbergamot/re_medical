@@ -16,12 +16,19 @@ class DoctorCommentsController < ApplicationController
   end
 
   def edit
+    @doctor_comment = DoctorComment.find(params[:id])
   end
 
   def update
+    @doctor_comment = DoctorComment.find(params[:id])
+    @doctor_comment.update(doctor_comment_params)
+    redirect_to post_path(@doctor_comment.opinion.post_id)
   end
 
+
   def destroy
+    doctor_comment = DoctorComment.find(params[:id])
+    doctor_comment.destroy
   end
 
   private

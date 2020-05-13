@@ -1,10 +1,14 @@
 <h1>マイページ</h1>
 
-<p><%= current_patient.family_name %></p>
-<p><%= current_patient.first_name %></p>
-<p><%= current_patient.family_name_kana %></p>
-<p><%= current_patient.first_name_kana %></p>
-<p><%= current_patient.date_of_birth %></p>
-<p><%= current_patient.gender %></p>
+<p><%= @patient.family_name + ' ' + @patient.first_name %>
+  <small>(<%= @patient.family_name_kana + ' ' + @patient.first_name_kana %>)</small></p>
+<p><%= @patient.date_of_birth %></p>
+<p><%= @patient.gender %></p>
+
+<% if patient_signed_in? %>
+  <% if @patient == current_patient %>
+    <%= link_to edit_patient_registration_path do %>編集<% end %>
+  <% end %>
+<% end %>
 
 <%= link_to new_post_path do %>新規投稿<% end %>

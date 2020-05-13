@@ -22,9 +22,14 @@ class HospitalsController < ApplicationController
   end
 
   def update
+    @hospital = Hospital.find(params[:id])
+    @hospital.update(hospital_params)
+    redirect_to @hospital
   end
 
   def destroy
+    hospital = Hospital.find(params[:id])
+    hospital.destroy
   end
 
   private

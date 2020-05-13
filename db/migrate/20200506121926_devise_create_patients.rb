@@ -38,7 +38,7 @@ class DeviseCreatePatients < ActiveRecord::Migration[5.2]
       t.string :first_name_kana
       t.string :phone_number
       t.integer :gender
-      t.string :date_of_birth
+      t.date :date_of_birth
       t.timestamps null: false
     end
 

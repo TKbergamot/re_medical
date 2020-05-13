@@ -37,9 +37,9 @@ class DeviseCreateDoctors < ActiveRecord::Migration[5.2]
       t.string :family_name_kana
       t.string :first_name_kana
       t.integer :gender
-      t.string :date_of_birth
+      t.date :date_of_birth
       t.string :registration_number
-      t.string :registration_date
+      t.date :registration_date
       t.text :description
       t.string :image
       t.references :hospital, foreign_key: true

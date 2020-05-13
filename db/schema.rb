@@ -39,9 +39,9 @@ ActiveRecord::Schema.define(version: 2020_05_06_124508) do
     t.string "family_name_kana"
     t.string "first_name_kana"
     t.integer "gender"
-    t.string "date_of_birth"
+    t.date "date_of_birth"
     t.string "registration_number"
-    t.string "registration_date"
+    t.date "registration_date"
     t.text "description"
     t.string "image"
     t.integer "hospital_id"
@@ -103,7 +103,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_124508) do
     t.string "first_name_kana"
     t.string "phone_number"
     t.integer "gender"
-    t.string "date_of_birth"
+    t.date "date_of_birth"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_patients_on_email", unique: true

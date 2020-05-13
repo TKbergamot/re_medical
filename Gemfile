@@ -66,3 +66,10 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'carrierwave'
 gem 'devise'
 gem 'pry-rails'
+gem 'mini_magick'
+gem 'font-awesome-sass'
+gem 'dotenv-rails'
+
+group :production do
+  gem 'mysql2'
+end

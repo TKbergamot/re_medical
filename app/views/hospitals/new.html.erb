@@ -1,3 +1,4 @@
+<div class="main-left">
 <h1>新規病院登録</h1>
 <%= form_with model: Hospital.new, url: hospitals_path, locale: true do |f| %>
   病院名<%= f.text_field :name %><br/>
@@ -14,3 +15,7 @@
   病院画像<%= f.file_field :image %><br/>
   <%= f.submit '送信' %>
 <% end %>
+</div>
+<div class="main-right">
+  <h1>既に所属している方はこちら</h1>
+  </div>

@@ -1,2 +1,31 @@
-<h1>Home#about</h1>
-<p>Find me in app/views/home/about.html.erb</p>
+  <div class="home-top__image">
+    <h1 class="home-about__title">ABOUT US</h1>
+    <p class="home-about__title__sub">Re:Medicalについて</p>
+    <p class="home-about__intro">
+      Re:Medicalは、もっと気軽にセカンドオピニオンを受けれるよう<br/>
+      オンラインでの質問、回答ができるサイトです。<br/>
+      ご利用方法はとても簡単。3つのステップですぐにドクターに質問ができます。
+    </p>
+    <div class="home-about__intro-box">
+      <div class="home-about__intro-box__step">
+        <p class="home-about__intro-box__step-title">Step1</p>
+        <p class="home-about__intro-box__step-icon fas fa-sign-in-alt"></p>
+        <p class="home-about__intro-box__step-body">会員登録をしてください。</p>
+      </div>
+      <div class="home-about__intro-box__step">
+        <p class="home-about__intro-box__step-title">Step2</p>
+        <p class="home-about__intro-box__step-icon fas fa-file-medical-alt"></p>
+        <p class="home-about__intro-box__step-body">必要な書類を用意してください。<br/>
+          (紹介状、CT・MRI等のPDF・画像ファイル)</p>
+      </div>
+      <div class="home-about__intro-box__step">
+        <p class="home-about__intro-box__step-title">Step3</p>
+        <p class="home-about__intro-box__step-icon fas fa-laptop-medical"></p>
+        <p class="home-about__intro-box__step-body">セカンドオピニオン依頼を行ってください。<br/>
+        (複数の専門医からの回答が得られます)</p>
+      </div>
+    </div>
+    <%= link_to new_patient_registration_path do %>
+    <div class="home-about__start-btn btn">始める</div>
+    <% end %>
+  </div>

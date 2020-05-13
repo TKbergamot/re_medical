@@ -1,0 +1,13 @@
+<header class="header">
+  <nav class="nav">
+    <ul class="nav-list">
+      <% if doctor_signed_in? %>
+        <%= render '/layouts/doctor_header' %>
+      <% elsif patient_signed_in? %>
+        <%= render '/layouts/patient_header'%>
+      <% else %>
+        <%= render '/layouts/guest_header'%>
+      <% end %>
+    </ul>
+  </nav>
+</header>

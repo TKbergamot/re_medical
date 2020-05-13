@@ -1,0 +1,39 @@
+.header {
+  display: flex;
+  border-bottom: 1px solid #f4f4ff;
+  width: 100%;
+  position: fixed;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(3px);
+}
+
+.nav {
+  width: 95%;
+  margin: 0 auto;
+  height: 2.3rem;
+  line-height: 2.3rem;
+
+  &-list {
+    display: flex;
+    list-style: none;
+
+    &__content {
+      text-align: center;
+
+      a {
+        display: block;
+        padding: 0 1rem;
+        width: 100%;
+        height: 100%;
+        transition: all 0.3s;
+        &:hover {
+          border-bottom: 5px solid #515151;
+        }
+      }
+
+      &:nth-child(2) {
+        margin-left: auto;
+      }
+    }
+  }
+}

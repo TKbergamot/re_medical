@@ -1,3 +1,175 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.home {
+  &-top {
+    &__image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background-image: linear-gradient(
+          to right bottom,
+          rgba(60, 60, 200, 0.5),
+          rgba(0, 0, 0, 0.5)
+        ),
+        image-url("dna.jpg");
+      background-size: cover;
+      // clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+    }
+    &__title {
+      font-family: Lato;
+      font-weight: 300;
+      letter-spacing: 0.7rem;
+      position: relative;
+      top: 4rem;
+      text-align: center;
+      font-size: 6rem;
+      color: #fff;
+      animation: moveInLeft 0.7s ease-out 0.3s;
+      animation-fill-mode: both;
+      &__sub {
+        font-family: Lato;
+        letter-spacing: 0.25rem;
+        position: relative;
+        top: 4.5rem;
+        text-align: center;
+        font-size: 2rem;
+        color: #fff;
+        animation: moveInLeft 0.7s ease-out 0.8s;
+        animation-fill-mode: both;
+      }
+    }
+    &__intro {
+      font-family: lato;
+      letter-spacing: 0.3rem;
+      position: relative;
+      top: calc(100% - 12rem);
+      color: #fff;
+      text-align: center;
+      backdrop-filter: blur(1px);
+      animation: moveInRight 0.7s ease-out 1.3s;
+      animation-fill-mode: both;
+      overflow-x: hidden;
+    }
+    &__about-btn {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: moveInBottom 0.7s ease-out 0.8s;
+      animation-fill-mode: both;
+    }
+    &__login {
+      position: absolute;
+      display: inline-block;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: moveInBottom 0.7s ease-out 1.3s;
+      animation-fill-mode: both;
+    }
+    &__patient-btn {
+      margin-right: 5rem;
+    }
+  }
+  &-about {
+    &__title {
+      font-family: Lato;
+      font-weight: 300;
+      letter-spacing: 0.7rem;
+      position: relative;
+      top: 4rem;
+      text-align: center;
+      font-size: 6rem;
+      color: #fff;
+      animation: moveInLeft 0.7s ease-out 0.3s;
+      animation-fill-mode: both;
+      &__sub {
+        font-family: Lato;
+        letter-spacing: 0.25rem;
+        position: relative;
+        top: 4.5rem;
+        text-align: center;
+        font-size: 2rem;
+        color: #fff;
+        animation: moveInLeft 0.7s ease-out 0.8s;
+        animation-fill-mode: both;
+      }
+    }
+    &__intro {
+      position: relative;
+      top: 8rem;
+      letter-spacing: 0.1rem;
+      line-height: 2rem;
+      color: #fff;
+      text-align: center;
+      backdrop-filter: blur(1px);
+      animation: moveInRight 0.7s ease-out 0.8s;
+      animation-fill-mode: both;
+      overflow-x: hidden;
+      &-box {
+        position: relative;
+        top: 12rem;
+        display: grid;
+        width: 1280px;
+        left: 50%;
+        padding: 2rem 0;
+        background: radial-gradient(rgba(200, 200, 200, 0.2), rgba(0, 0, 0, 0));
+        border-radius: 1rem;
+        transform: translate(-50%, -50%);
+        grid-auto-rows: auto;
+        grid-template-columns: 1fr 1fr 1fr;
+        animation: moveInBottom 0.7s ease-out 1.3s;
+        animation-fill-mode: both;
+        backdrop-filter: blur(5px);
+        &__step {
+          display: inline-block;
+          text-align: center;
+          &-title {
+            color: #fff;
+            letter-spacing: 0.1rem;
+          }
+          &-icon {
+            width: 8.5rem;
+            height: 8.5rem;
+            line-height: 7.5rem;
+            font-size: 4rem;
+            color: #fff;
+            border: 4px solid #fff;
+            border-radius: 50%;
+            margin-top: 2rem;
+          }
+          &-body {
+            color: #fff;
+            letter-spacing: 0.1rem;
+            margin-top: 2rem;
+          }
+        }
+      }
+    }
+    &__start-btn {
+      position: relative;
+      top: 16rem;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: moveInBottom 0.7s ease-out 1.3s;
+      animation-fill-mode: both;
+    }
+  }
+}
+
+.btn {
+  font-family: Lato;
+  letter-spacing: 0.3rem;
+  color: #fff;
+  display: inline-block;
+  padding: 0.5rem 3rem;
+  border: 2px solid #fff;
+  color: #fff;
+  text-align: center;
+  text-decoration: none;
+  outline: none;
+  transition: all 0.3s;
+  &:hover {
+    box-shadow: 0 0 30px rgba(255, 255, 255, 0.6) inset;
+  }
+}

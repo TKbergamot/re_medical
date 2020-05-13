@@ -1,2 +1,6 @@
-<h1>DoctorComments#edit</h1>
-<p>Find me in app/views/doctor_comments/edit.html.erb</p>
+<h1>医師コメント編集</h1>
+
+<%= form_with model: @doctor_comment, url: doctor_comment_path(@doctor_comment), local: true do |c| %>
+  <p>内容<%= c.text_field :content %></p>
+  <%= c.submit '送信' %>
+<% end %>

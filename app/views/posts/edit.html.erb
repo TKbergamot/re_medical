@@ -1,2 +1,8 @@
-<h1>Posts#edit</h1>
-<p>Find me in app/views/posts/edit.html.erb</p>
+<h1>投稿編集</h1>
+<%= form_with model: @post, url: post_path(@post), locale: true do |f| %>
+  紹介状等<%= f.file_field :refferal, multiple: true %><br/>
+  病名<%= f.text_field :desease_name %><br/>
+  症状詳細等<%= f.text_field :detail %><br/>
+  担当科<%= f.collection_select(:name, Department.all, :id, :name) %>
+  <%= f.submit '送信' %>
+<% end %>

@@ -1,2 +1,16 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+  <div class="home-top__image">
+    <h1 class="home-top__title">Re:MEDICAL</h1>
+    <p class="home-top__title__sub">ONLINE SECOND OPINION SERVICE</p>
+    <p class="home-top__intro">SECOND OPINION MORE EASILY.</p>
+    <%= link_to about_path do %>
+      <p class="home-top__about-btn btn">ABOUT</p>
+    <% end %>
+    <div class="home-top__login">
+      <%= link_to new_patient_session_path do %>
+        <p class="home-top__patient-btn btn">PATIENT</p>
+      <% end %>
+      <%= link_to new_doctor_session_path do %>
+        <p class="home-top__doctor-btn btn">DOCTOR</p>
+      <% end %>
+    </div>
+  </div>
