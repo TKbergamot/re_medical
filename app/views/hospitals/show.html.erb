@@ -1,13 +1,44 @@
-<h1>病院詳細</h1>
-<p><%= @hospital.name %></p>
-<p><%= @hospital.name_kana %></p>
-<p><%= @hospital.founder %></p>
-<p><%= @hospital.founder_kana %></p>
-<p><%= @hospital.administer %></p>
-<p><%= @hospital.administer_kana %></p>
-<p><%= @hospital.post_code %></p>
-<p><%= @hospital.address %></p>
-<p><%= @hospital.phone_number %></p>
-<p><%= link_to @hospital.homepage, @hospital.homepage %></p>
-<p><%= @hospital.description %></p>
-<p><%= image_tag @hospital.image.to_s %></p>
+<div class="hospital-container">
+  <div class="hospital-show">
+    <div class="hospital-show__intro">
+      <%= image_tag @hospital.image.thumb.to_s, class:"hospital-show__image" %>
+      <div class="hospital-show__text">
+        <p class="hospital-show__name"><%= @hospital.name %></p>
+        <p class="hospital-show__address"><%= @hospital.address %></p>
+      </div>
+    </div>
+  </div>
+  <div class="hospital-main">
+    <div class="hospital-main__left">
+      <div class="hospital-show__detail">
+        <div class="hospital-show__description">
+          <p><%= simple_format @hospital.description %></p>
+        </div>
+        <div class="hospital-show__doctors">
+          <h5 class="hospital-show__doctors-info">所属医師</h5>
+          <% @hospital.doctors.each do |doctor| %>
+            <%= link_to doctor_path(doctor) do %>
+            <div class="hospital-show__doctor">
+              <%= image_tag doctor.image.thumb.to_s, class:"hospital-show__doctor-image" %>
+              <p class="hospital-show__doctor-name"><%= doctor.family_name + " " + doctor.first_name %><br/><small><%= doctor.department.name %></small></p>
+            </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="hospital-show__info">
+          <h5 class="hospital-show__info-text">詳細情報</h5>
+          <p><%= @hospital.name %></p>
+          <p><%= @hospital.founder %></p>
+          <p><%= @hospital.administer %></p>
+          <p><i class="fas fa-map-marker-alt"></i> <%= @hospital.post_code %> <%= @hospital.address %></p>
+          <p><i class="fas fa-phone-alt"></i> <%= @hospital.phone_number %></p>
+          <%= link_to @hospital.homepage do %><i class="fas fa-globe"></i> <%= @hospital.homepage %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="hospital-main__right">
+      <%= render "hospitals/reservation" %>
+    </div>
+  </div>
+</div>

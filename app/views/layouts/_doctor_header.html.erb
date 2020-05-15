@@ -1,4 +1,4 @@
-<li class="nav-list__content"><%= link_to root_path do %>Re:medical<% end %></li>
+<li class="nav-list__content top-title"><%= link_to root_path do %>Re:MEDICAL<% end %></li>
 <li class="nav-list__content"><%= link_to posts_path do %>投稿一覧<% end %></li>
 <% if current_doctor.hospital_id.present? %>
   <li class="nav-list__content"><%= link_to hospital_path(current_doctor.hospital_id) do %>所属病院<% end %></li>

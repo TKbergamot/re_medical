@@ -1,11 +1,11 @@
+# frozen_string_literal: true
 class PostsController < ApplicationController
   def index
-    @posts = Post.all.order(created_at: "DESC")
+    @posts = Post.all.includes(:opinions).order(created_at: 'DESC')
   end
 
   def show
     @post = Post.find(params[:id])
-    @opinions = Opinion.where(post_id: params[:id]).order(created_at: "DESC")
   end
 
   def new
@@ -37,6 +37,6 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:desease_name, :detail, :patient_id, :department_id, refferal:[])
+      params.require(:post).permit(:desease_name, :detail, :patient_id, :department_id, refferal: [])
     end
 end

@@ -1,4 +1,18 @@
-<h1>病院一覧</h1>
-<% @hospitals.each do |hospital| %>
-  <p><% hospital.name %></p>
-<% end %>
+<div class="hospital-container">
+  <div class="hospital-show">
+    <div class="hospital-show__intro">
+      <%= image_tag "dna.jpg", class:"hospital-show__image" %>
+      <div class="hospital-show__text">
+        <p class="hospital-show__name">病院一覧</p>
+      </div>
+    </div>
+  </div>
+  <div class="hospital-main">
+    <div class="hospital-main__left">
+      <%= render @hospitals %>
+    </div>
+    <div class="hospital-main__right">
+      <%= render 'hospitals/search' %>
+    </div>
+  </div>
+</div>

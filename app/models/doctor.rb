@@ -5,4 +5,7 @@ class Doctor < ApplicationRecord
           :recoverable, :rememberable, :validatable
 
   mount_uploader :image, ImageUploader
+  has_many :opinions
+  has_many :doctor_comments
+  belongs_to :department
 end

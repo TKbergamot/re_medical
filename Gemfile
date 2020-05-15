@@ -69,6 +69,7 @@ gem 'pry-rails'
 gem 'mini_magick'
 gem 'font-awesome-sass'
 gem 'dotenv-rails'
+gem 'jquery-rails'
 
 group :production do
   gem 'mysql2'

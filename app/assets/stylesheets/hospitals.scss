@@ -1,3 +1,197 @@
-// Place all the styles related to the Hospitals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.hospital-container {
+  width: 960px;
+  margin: 3rem auto 0;
+}
+
+.hospital-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.hospital-list {
+  display: grid;
+  position: relative;
+  background-color: #fff;
+  padding: 1.5rem 1rem;
+  margin: 0 1rem 1rem 0;
+  grid-template-columns: 64px 8fr 1fr;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  transition: all 0.4s;
+  box-shadow: 1rem 1rem 1rem #0000;
+  &__image {
+    width: 4rem;
+  }
+  &__text {
+    margin: auto 1rem;
+    &__name {
+      color: #000;
+      font-size: 1.3rem;
+      letter-spacing: 0.1rem;
+      font-weight: normal;
+      margin-left: calc(-0.5rem + -2px);
+      padding-left: 0.5rem;
+      padding-bottom: -0.3rem;
+      margin-bottom: 0.3rem;
+      border-left: 4px solid #0099ff;
+    }
+    &__address {
+      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+      font-weight: normal;
+      padding-bottom: 0.3rem;
+    }
+    &__description {
+      font-size: 0.9rem;
+      letter-spacing: 0.05rem;
+      padding-bottom: 0.3rem;
+    }
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    transform: rotate(45deg);
+    border-top: 2px solid #515151;
+    border-right: 2px solid #515151;
+    top: calc(50% - 0.6rem);
+    right: 2rem;
+    transition: all 0.2s;
+  }
+  &:hover::after {
+    border-top: 2px solid #0099ff;
+    border-right: 2px solid #0099ff;
+    right: 1.5rem;
+  }
+  &:hover {
+    border: 2px solid #0099ff;
+    box-shadow: 1rem 1rem 1rem #0004;
+  }
+  &:active {
+    box-shadow: 1rem 1rem 1rem #0000;
+  }
+}
+
+.hospital-show {
+  display: grid;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw) 2rem;
+  height: 10rem;
+  background-color: #0005;
+  backdrop-filter: blur(3px);
+  grid-template-columns: 1fr 960px 1fr;
+  &__intro {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 5rem 1fr 5rem;
+    grid-template-rows: 2rem 1fr 2rem;
+  }
+  &__image {
+    grid-column: 1;
+    grid-row: 2;
+    width: 4rem;
+    height: 4rem;
+    margin: auto auto;
+    border-radius: 50%;
+  }
+  &__text {
+    grid-column: 2;
+    grid-row: 2;
+    margin: auto 2rem;
+  }
+  &__name {
+    color: #fff;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+    font-weight: normal;
+    padding-bottom: 0.3rem;
+  }
+  &__address {
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    font-weight: normal;
+    padding-bottom: 0.3rem;
+  }
+  &__description {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    padding-bottom: 0.3rem;
+  }
+
+  &__detail {
+    background-color: #fff;
+    padding: 1rem 1rem;
+    margin: 0 1rem 1rem 0;
+    grid-template-columns: 64px 8fr 1fr;
+    border: 2px solid #ccc;
+    border-radius: 0.5rem;
+  }
+
+  &__doctors {
+    margin: 2rem 0;
+    &-info {
+      border-left: 2px solid #0099ff;
+      padding-left: 0.5rem;
+      padding-bottom: 0.2rem;
+    }
+  }
+
+  &__doctor {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    &:hover {
+      filter: drop-shadow(0.2rem 0.2rem 0.1rem #0004);
+    }
+    &-image {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+    &-name {
+      grid-columns: 2;
+      margin: auto 2rem;
+    }
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(45deg);
+      border-top: 2px solid #515151;
+      border-right: 2px solid #515151;
+      top: calc(50% - 0.6rem);
+      right: 2rem;
+      transition: all 0.2s;
+    }
+    &:hover::after {
+      border-top: 2px solid #0099ff;
+      border-right: 2px solid #0099ff;
+      right: 1.5rem;
+    }
+  }
+
+  &__info {
+    margin: 2rem 0;
+    &-text {
+      border-left: 2px solid #0099ff;
+      padding-left: 0.5rem;
+      padding-bottom: 0.2rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      padding-left: calc(0.5rem + 2px);
+    }
+    a {
+      padding-left: calc(0.5rem + 2px);
+      color: #0099ff;
+    }
+  }
+}

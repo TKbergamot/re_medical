@@ -1,5 +1,6 @@
 <div class="main-left">
 <h1>新規病院登録</h1>
+<div id ="sugoi" style="display:none;">
 <%= form_with model: Hospital.new, url: hospitals_path, locale: true do |f| %>
   病院名<%= f.text_field :name %><br/>
   病院フリガナ<%= f.text_field :name_kana %><br/>
@@ -9,13 +10,20 @@
   管理者フリガナ<%= f.text_field :administer_kana %><br/>
   郵便番号<%= f.text_field :post_code %><br/>
   住所<%= f.text_field :address %><br/>
-  電話番号<%= f.text_field :phone_number %><br/>
-  ホームページURL<%= f.text_field :homepage %><br/>
-  病院説明等<%= f.text_field :description %><br/>
+  電話番号<%= f.telephone_field :phone_number %><br/>
+  ホームページURL<%= f.url_field :homepage %><br/>
+  病院説明等<%= f.text_area :description %><br/>
   病院画像<%= f.file_field :image %><br/>
   <%= f.submit '送信' %>
 <% end %>
 </div>
+</div>
 <div class="main-right">
   <h1>既に所属している方はこちら</h1>
   </div>
+
+<script>
+    $('h1').click(function() {
+        $('#sugoi').show(100);
+    })
+</script>

@@ -1,0 +1,15 @@
+<%= form_with model: hospital locale: true do |f| %>
+  病院名<%= f.text_field :name %><br/>
+  病院フリガナ<%= f.text_field :name_kana %><br/>
+  開設者名<%= f.text_field :founder %><br/>
+  開設者フリガナ<%= f.text_field :founder_kana %><br/>
+  管理者名<%= f.text_field :administer %><br/>
+  管理者フリガナ<%= f.text_field :administer_kana %><br/>
+  郵便番号<%= f.text_field :post_code %><br/>
+  住所<%= f.text_field :address %><br/>
+  電話番号<%= f.telephone_field :phone_number %><br/>
+  ホームページURL<%= f.url_field :homepage %><br/>
+  病院説明等<%= f.text_area :description %><br/>
+  病院画像<%= f.file_field :image %><br/>
+  <%= f.submit '送信' %>
+<% end %>

@@ -1,6 +1,10 @@
+<div>
 <h1>投稿一覧</h1>
 <% @posts.each do |post| %>
 <%= link_to post_path(post) do %>
 <p><%= post.desease_name %></p>
 <% end %>
 <% end %>
+
+<%= render @posts %>
+</div>
