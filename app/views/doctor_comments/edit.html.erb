@@ -1,6 +1,6 @@
 <h1>医師コメント編集</h1>
 
 <%= form_with model: @doctor_comment, url: doctor_comment_path(@doctor_comment), local: true do |c| %>
-  <p>内容<%= c.text_field :content %></p>
+  <p>内容<%= c.text_area :content %></p>
   <%= c.submit '送信' %>
 <% end %>

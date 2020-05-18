@@ -1,39 +1,99 @@
-<div>
-  <p>オピニオン者名：<%= opinion.doctor.family_name + ' ' + opinion.doctor.first_name %></p>
-  <p>オピニオン詳細：<%= opinion.content %></p>
-  <% if doctor_signed_in? %>
-    <% if opinion.doctor_id == current_doctor.id %>
-      <p><%= link_to edit_opinion_path(opinion) do %>編集<% end %></p>
-    <% end %>
-  <% end %>
-  <% opinion.doctor_comments.each do |doctor_comment| %>
-    <p>医師コメント者名：<%= doctor_comment.doctor.family_name + ' ' + doctor_comment.doctor.first_name %></p>
-    <p>医師コメント詳細：<%= doctor_comment.content %></p>
+<div class="opinion-box">
+  <div class="opinion__prof-box">
+    <%= image_tag opinion.doctor.image.thumb.to_s, class:"opinion__image" %>
+    <div class="opinion__name-box">
+      <h1 class="opinion__name"><%= opinion.doctor.family_name + ' ' + opinion.doctor.first_name %></h1>
+      <p class="opinion__time"><%= opinion.created_at %></p>
+    </div>
+  </div>
+  <div class="opinion__content-box">
+    <p class="opinion__content"><%= simple_format opinion.content %></p>
     <% if doctor_signed_in? %>
-      <% if doctor_comment.doctor_id == current_doctor.id %>
-        <p><%= link_to edit_doctor_comment_path(doctor_comment) do %>編集<% end %></p>
+      <% if opinion.doctor_id == current_doctor.id %>
+        <p class="opinion__edit post-button opinion-edit__toggle-<%= opinion.id %>">編集</p>
+        <div class="opinion-edit__form-<%= opinion.id %> form-toggle">
+          <%= form_with model: opinion, url: opinion_path(opinion), local: true do |f| %>
+            <p>内容<%= f.text_area :content %></p>
+            <%= f.submit '送信' %>
+          <% end %>
+        </div>
+
       <% end %>
     <% end %>
-  <% end %>
-  <% opinion.patient_comments.each do |patient_comment| %>
-    <p><%= patient_comment.patient.family_name + ' ' + patient_comment.patient.first_name %></p>
-    <p><%= patient_comment.content %></p>
-    <% if patient_signed_in? %>
-      <% if patient_comment.patient_id == current_patient.id %>
-        <p><%= link_to edit_patient_comment_path(patient_comment) do %>編集<% end %></p>
+  </div>
+  <div class="opinion__comment-box">
+    <p class="opinion__comment-size">コメント数： <%= opinion.doctor_comments.size + opinion.patient_comments.size %>件</p>
+    <% (opinion.patient_comments + opinion.doctor_comments).sort_by{|record| record.created_at}.each do |comment| %>
+      <% if comment.class == DoctorComment %>
+        <div class="opinion__comment">
+          <h1 class="opinion__comment__name"><%= comment.doctor.family_name + ' ' + comment.doctor.first_name %></h1>
+          <p class="opinion__comment__time"><%= comment.created_at %></p>
+          <p class="opinion__comment__content"><%= comment.content %></p>
+          <% if doctor_signed_in? %>
+            <% if comment.doctor_id == current_doctor.id %>
+              <p class="opinion__comment__edit post-button opinion__comment-edit__toggle-<%= comment.id %>">編集</p>
+
+            <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
+              <%= form_with model: comment, url: doctor_comment_path(comment), local: true do |c| %>
+                <p>内容<%= c.text_area :content %></p>
+                <%= c.submit '送信' %>
+              <% end %>
+            </div>
+
+
+            <% end %>
+          <% end %>
+        </div>
+      <% elsif comment.class == PatientComment %>
+        <div class="opinion__comment">
+          <h1 class="opinion__comment__name"><%= comment.patient.family_name + ' ' + comment.patient.first_name %></h1>
+          <p class="opinion__comment__time"><%= comment.created_at %></p>
+          <p class="opinion__comment__content"><%= comment.content %></p>
+          <% if patient_signed_in? %>
+            <% if comment.patient_id == current_patient.id %>
+            <%= link_to edit_patient_comment_path(comment) do %><p class="opinion__comment__edit post-button">編集</p><% end %>
+            <% end %>
+          <% end %>
+        </div>
       <% end %>
+      <script>
+        $('.opinion__comment-edit__toggle-<%= comment.id %>').click(function() {
+          $('.opinion__comment-edit__form-<%= comment.id %>').toggle();
+        })
+      </script>
     <% end %>
-  <% end %>
+  </div>
   <% if doctor_signed_in? %>
-    <%= form_with model: DoctorComment.new, local: true do |c| %>
-      <p>医師コメント内容<%= c.text_area :content %></p>
-      <%= c.submit '送信' %>
-    <% end %>
+    <div class="opinion__comment__toggle-<%= opinion.id %>">
+      <p>コメントする</p>
+    </div>
+    <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
+      <%= form_with model: DoctorComment.new, local: true do |c| %>
+        <p>医師コメント内容<%= c.text_area :content %></p>
+        <%= c.hidden_field :opinion_id, value: opinion.id %>
+        <%= c.submit '送信' %>
+      <% end %>
+    </div>
   <% elsif patient_signed_in? %>
-    <%= form_with model: PatientComment.new, local: true do |c| %>
-      <p>患者コメント内容<%= c.text_area :content %></p>
-      <%= c.hidden_field :opinion_id, value: opinion.id %>
-      <%= c.submit '送信' %>
-    <% end %>
+    <div class="opinion__comment__toggle-<%= opinion.id %>">
+      <p>コメントする</p>
+    </div>
+    <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
+      <%= form_with model: PatientComment.new, local: true do |c| %>
+        <p>患者コメント内容<%= c.text_area :content %></p>
+        <%= c.hidden_field :opinion_id, value: opinion.id %>
+        <%= c.submit '送信' %>
+      <% end %>
+    </div>
   <% end %>
 </div>
+
+
+<script>
+    $('.opinion__comment__toggle-<%= opinion.id %>').click(function() {
+        $('.opinion__comment__form-<%= opinion.id %>').toggle();
+    })
+    $('.opinion-edit__toggle-<%= opinion.id %>').click(function() {
+        $('.opinion-edit__form-<%= opinion.id %>').toggle();
+    })
+</script>

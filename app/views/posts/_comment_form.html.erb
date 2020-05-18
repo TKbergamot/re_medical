@@ -1,0 +1,13 @@
+<% if doctor_signed_in? %>
+  <%= form_with model: DoctorComment.new, local: true do |c| %>
+    <p>医師コメント内容<%= c.text_area :content %></p>
+    <%= c.hidden_field :opinion_id, value: opinion.id %>
+    <%= c.submit '送信' %>
+  <% end %>
+<% elsif patient_signed_in? %>
+  <%= form_with model: PatientComment.new, local: true do |c| %>
+    <p>患者コメント内容<%= c.text_area :content %></p>
+    <%= c.hidden_field :opinion_id, value: opinion.id %>
+    <%= c.submit '送信' %>
+  <% end %>
+<% end %>

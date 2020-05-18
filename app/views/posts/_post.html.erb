@@ -1,19 +1,24 @@
-<div>
-<p>投稿者名：<%= post.patient.family_name + ' ' + post.patient.first_name %>
-<p>病名：<%= post.desease_name %></p>
-<p>病状詳細：<%= post.detail %></p>
-<% post.refferal.each do |r| %>
-  <%= image_tag r.thumb.to_s %>
+      <div class="post-box">
+<%= link_to post_path(post) do %>
+        <div class="post-info">
+          <h1 class="post-info__desease-name"><%= post.desease_name %></h1>
+          <h5 class="post-info__name"><%= post.patient.family_name + ' ' + post.patient.first_name %></h5>
+          <p class="post-info__time"><%= post.created_at %></p>
+          <p class="post-info__detail">病状詳細：<%= post.detail %></p>
+          <div class="post-info__refferal">
+            <% post.refferal.each do |r| %>
+              <%= image_tag r.thumb.to_s %>
+            <% end %>
+          </div>
+        </div>
 <% end %>
-<% if doctor_signed_in? %>
-  <%= form_with model: Opinion.new, local: true do |f| %>
-    <p>オピニオン内容<%= f.text_area :content %></p>
-    <%= f.hidden_field :post_id, value: post.id %>
-  <%= f.submit '送信' %>
-  <% end %>
-<% end %>
-
-
-<%= render post.opinions %>
-
-</div>
+        <% if doctor_signed_in? %>
+          <% if Opinion.find_by(post_id: params[:id], doctor_id: current_doctor.id).nil? %>
+            <%= form_with model: Opinion.new, local: true do |f| %>
+              <p>オピニオン内容<%= f.text_area :content %></p>
+              <%= f.hidden_field :post_id, value: post.id %>
+            <%= f.submit '送信' %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>

@@ -1,3 +1,87 @@
-// Place all the styles related to the Posts controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.post-container {
+  width: 960px;
+  margin: 3rem auto 0;
+}
+
+.post-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.post-box {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  border-radius: 0.5rem;
+  margin: 0 1rem 1rem 0;
+  padding: 1rem;
+  filter: drop-shadow(0.4rem 0.4rem 0.2rem #0004);
+}
+
+.post-info {
+  &__desease-name {
+    font-size: 1rem;
+    border-left: 2px solid #0099ff;
+    padding-left: 0.5rem;
+  }
+  &__name {
+    margin-left: calc(0.5rem + 2px);
+  }
+  &__time {
+    text-align: right;
+    font-size: 0.9rem;
+    color: lighten(#515151, 30%);
+  }
+  &__detail {
+    margin-top: 2rem;
+    margin-left: calc(0.5rem + 2px);
+    margin-bottom: 2rem;
+  }
+
+  &__refferal {
+    width: 100%;
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #ccc;
+  }
+}
+
+.post-button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  color: lighten(#515151, 30%);
+  padding: 0.2rem 1rem 0.2rem 0.5rem;
+  border: 2px solid lighten(#515151, 30%);
+  border-radius: 2rem;
+  transition: all 0.2s;
+  &:hover {
+    color: #0099ff;
+    border: 2px solid #0099ff;
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 0.2rem;
+    height: 0.2rem;
+    transform: rotate(135deg);
+    border-top: 2px solid lighten(#515151, 30%);
+    border-right: 2px solid lighten(#515151, 30%);
+    top: calc(50% - 0.13rem);
+    right: 0.5rem;
+    transition: all 0.2s;
+  }
+  &:hover::after {
+    border-top: 2px solid #0099ff;
+    border-right: 2px solid #0099ff;
+    top: 50%;
+  }
+  &:active::after {
+    transform: rotate(-45deg);
+  }
+}
+
+.form-toggle {
+  display: none;
+}

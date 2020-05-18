@@ -1,5 +1,5 @@
 <h1>オピニオン編集</h1>
 <%= form_with model: @opinion, url: opinion_path(@opinion), local: true do |f| %>
-  <p>内容<%= f.text_field :content %></p>
+  <p>内容<%= f.text_area :content %></p>
 <%= f.submit '送信' %>
 <% end %>

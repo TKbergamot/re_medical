@@ -1,15 +1,32 @@
-<h1>医師詳細</h1>
-
-<p><%= image_tag @doctor.image.thumb.to_s %></p>
-<p><%= @doctor.family_name + ' ' + @doctor.first_name %>
-  <small>(<%= @doctor.family_name_kana + ' ' + @doctor.first_name_kana %>)</small></p>
-<p><%= @doctor.date_of_birth %></p>
-<p><%= @doctor.gender %></p>
-<p><%= @doctor.hospital_id %></p>
-<p><%= @doctor.department_id %></p>
-<p><%= @doctor.description %></p>
-<% if doctor_signed_in? %>
-  <% if @doctor == current_doctor %>
-    <%= link_to edit_doctor_registration_path do %>編集<% end %>
-  <% end %>
-<% end %>
+<div class="doctor-container">
+  <div class="doctor-head">
+  </div>
+  <div class="doctor-main">
+    <div class="doctor-main__left">
+      <div class="doctor-info__box">
+        <%= image_tag @doctor.image.thumb.to_s,class:'doctor-info__image' %>
+        <h1 class="doctor-info__name"><%= @doctor.family_name + ' ' + @doctor.first_name %>
+          <small>(<%= @doctor.family_name_kana + ' ' + @doctor.first_name_kana %>)</small> 医師</h1>
+        <%= simple_format @doctor.description, class:"doctor-info__description" %>
+        <div class="doctor-info__hospitals">
+          <h5 class="doctor-info__hospitals-info">所属病院</h5>
+          <%= link_to hospital_path(@doctor.hospital) do %>
+            <div class="doctor-info__hospital">
+              <%= image_tag @doctor.hospital.image.thumb.to_s, class:"doctor-info__hospital-image" %>
+              <p class="doctor-info__hospital-name"><%= @doctor.hospital.name %></p>
+            </div>
+          <% end %>
+        </div>
+        <p class="doctor-info__department"><%= @doctor.department.name %></p>
+        <% if doctor_signed_in? %>
+          <% if @doctor == current_doctor %>
+            <%= link_to edit_doctor_registration_path do %>編集<% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <div class="doctor-main__right">
+      <%= render 'hospitals/search' %>
+    </div>
+  </div>
+</div>

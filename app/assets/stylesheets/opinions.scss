@@ -1,3 +1,80 @@
-// Place all the styles related to the Opinions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.opinion-box {
+}
+
+.opinion {
+  &__prof-box {
+    display: grid;
+    grid-template-columns: 3rem 1fr;
+  }
+  &__image {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+  &__name-box {
+    margin: auto 0;
+  }
+  &__name {
+    font-size: 1rem;
+    border-left: 2px solid #0099ff;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+  }
+  &__time {
+    font-size: 0.9rem;
+    color: lighten(#515151, 30%);
+    margin-left: 1rem;
+  }
+
+  &__content-box::after {
+    content: "";
+    clear: both;
+    display: block;
+  }
+  &__content {
+    margin-top: 1rem;
+  }
+  &__edit {
+    float: right;
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-right: 1rem;
+  }
+
+  &__comment {
+    margin-bottom: 2rem;
+    &::after {
+      content: "";
+      clear: both;
+      display: block;
+    }
+    &-box {
+      margin: 2rem 1rem;
+    }
+    &-size {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    &__name {
+      font-size: 1rem;
+      border-left: 2px solid #0099ff;
+      padding-left: 0.5rem;
+    }
+    &__time {
+      font-size: 0.9rem;
+      color: lighten(#515151, 30%);
+      text-align: right;
+    }
+
+    &__content {
+      margin-left: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    &__edit {
+      float: right;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+  }
+}

@@ -1,3 +1,109 @@
-// Place all the styles related to the Doctors controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.doctor-container {
+  width: 960px;
+  margin: 3rem auto 0;
+}
+
+.doctor-main {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+
+.doctor-head {
+  display: grid;
+  width: 100vw;
+  margin: 0 calc(50% - 50vw) 2rem;
+  height: 10rem;
+  background-color: #0005;
+  backdrop-filter: blur(3px);
+  grid-template-columns: 1fr 960px 1fr;
+}
+
+.doctor-info {
+  &__box {
+    position: relative;
+    background-color: #fff;
+    border: 2px solid #eee;
+    border-radius: 0.5rem;
+    padding: 6rem 1rem 2rem;
+    margin: 0 1rem 1rem 0;
+  }
+  &__image {
+    position: absolute;
+    top: -6rem;
+    left: 3rem;
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    padding: 0.5rem;
+    background-color: #fff;
+  }
+  &__name {
+    font-size: 1rem;
+    font-weight: bold;
+    border-left: 2px solid #0099ff;
+    padding-left: 0.5rem;
+  }
+  &__department {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    position: absolute;
+    top: 2rem;
+    left: 18rem;
+    padding: 0.2rem 0.8rem;
+    background-color: #818181;
+    border-radius: 1rem;
+  }
+  &__description {
+    letter-spacing: 0.05rem;
+    margin-left: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  &__hospitals {
+    margin: 2rem 0;
+    &-info {
+      border-left: 2px solid #0099ff;
+      padding-left: 0.5rem;
+      padding-bottom: 0.2rem;
+    }
+  }
+  &__hospital {
+    position: relative;
+    display: grid;
+    grid-template-columns: 4rem 1fr;
+    padding: 0.5rem 0;
+    border-radius: 0.5rem;
+    transition: all 0.2s;
+    &:hover {
+      filter: drop-shadow(0.2rem 0.2rem 0.1rem #0004);
+    }
+    &-image {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+    }
+    &-name {
+      grid-columns: 2;
+      margin: auto 2rem;
+    }
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      transform: rotate(45deg);
+      border-top: 2px solid #515151;
+      border-right: 2px solid #515151;
+      top: calc(50% - 0.6rem);
+      right: 2rem;
+      transition: all 0.2s;
+    }
+    &:hover::after {
+      border-top: 2px solid #0099ff;
+      border-right: 2px solid #0099ff;
+      right: 1.5rem;
+    }
+  }
+}

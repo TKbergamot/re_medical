@@ -1,7 +1,42 @@
-<div>
-<%= render @post %>
+<div class="post-container">
+  <div class="post-main">
+    <div class="post-main__left">
+      <div class="post-box">
+        <div class="post-info">
+          <h1 class="post-info__desease-name"><%= @post.desease_name %></h1>
+          <h5 class="post-info__name"><%= @post.patient.family_name + ' ' + @post.patient.first_name %></h5>
+          <p class="post-info__time"><%= @post.created_at %></p>
+          <p class="post-info__detail">病状詳細：<%= @post.detail %></p>
+          <div class="post-info__refferal">
+            <% @post.refferal.each do |r| %>
+              <%= image_tag r.thumb.to_s %>
+            <% end %>
+          </div>
+        </div>
+        <% if doctor_signed_in? %>
+          <% if Opinion.find_by(post_id: params[:id], doctor_id: current_doctor.id).nil? %>
+            <div class="opinion__toggle">
+            <p>コメントする</p>
+            </div>
+            <div class="opinion__form">
+            <%= form_with model: Opinion.new, local: true do |f| %>
+              <%= f.text_area :content %>
+              <%= f.hidden_field :post_id, value: @post.id %>
+            <%= f.submit '送信' %>
+            <% end %>
+            </div>
+          <% end %>
+        <% end %>
+        <%= render @post.opinions %>
+      </div>
+    </div>
+    <div class="post-main__right">
+    </div>
+  </div>
 </div>
 
-<% (DoctorComment.all + PatientComment.all).sort_by{|record| record.created_at}.each do |com| %>
-  <p><%= com.content %></p>
-<% end %>
+<script>
+    $('.opinion__toggle').click(function() {
+        $('.opinion__form').toggle();
+    })
+</script>
