@@ -1,7 +1,7 @@
 <div class="hospital-container">
   <div class="hospital-show">
     <div class="hospital-show__intro">
-      <%= image_tag @hospital.image.thumb.to_s, class:"hospital-show__image" %>
+      <%= image_tag @hospital.image.to_s, class:"hospital-show__image" %>
       <div class="hospital-show__text">
         <h1 class="hospital-show__name"><%= @hospital.name %></h1>
         <p class="hospital-show__address"><%= @hospital.address %></p>
@@ -27,6 +27,29 @@
         </div>
         <div class="hospital-show__info">
           <h5 class="hospital-show__info-text">詳細情報</h5>
+          <div id='hospital-show__map'></div>
+
+          <style>
+          #hospital-show__map{
+            height: 400px;
+          }
+          </style>
+
+          <script type="text/javascript">
+            handler = Gmaps.build('Google');
+            handler.buildMap({ provider: { scrollwheel: false }, internal: {id: 'hospital-show__map'}}, function(){
+              markers = handler.addMarkers([
+                {
+                  "lat": <%= @hospital.latitude %>,
+                  "lng": <%= @hospital.longitude %>,
+              "infowindow": '<p><%= @hospital.name %></p><p><%= @hospital.address %></p><p><%= link_to "Googleマップで見る" ,"https://maps.google.co.jp/maps?q=loc:#{@hospital.latitude},#{@hospital.longitude}&iwloc=J",target: "_blank" %></p>'
+                }
+              ]);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              handler.getMap().setZoom(17);
+            });
+          </script>
           <p><%= @hospital.name %></p>
           <p><%= @hospital.founder %></p>
           <p><%= @hospital.administer %></p>

@@ -7,7 +7,7 @@
     </div>
   </div>
   <div class="opinion__content-box">
-    <p class="opinion__content"><%= simple_format opinion.content %></p>
+    <p class="opinion__content"><%= safe_join(opinion.content.split("\n"),tag(:br)) %></p>
     <% if doctor_signed_in? %>
       <% if opinion.doctor_id == current_doctor.id %>
         <p class="opinion__edit post-button opinion-edit__toggle-<%= opinion.id %>">編集</p>
@@ -28,19 +28,21 @@
         <div class="opinion__comment">
           <h1 class="opinion__comment__name"><%= comment.doctor.family_name + ' ' + comment.doctor.first_name %></h1>
           <p class="opinion__comment__time"><%= comment.created_at %></p>
-          <p class="opinion__comment__content"><%= comment.content %></p>
+          <p class="opinion__comment__content"><%= safe_join(comment.content.split("\n"),tag(:br)) %></p>
           <% if doctor_signed_in? %>
             <% if comment.doctor_id == current_doctor.id %>
               <p class="opinion__comment__edit post-button opinion__comment-edit__toggle-<%= comment.id %>">編集</p>
-
-            <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
-              <%= form_with model: comment, url: doctor_comment_path(comment), local: true do |c| %>
-                <p>内容<%= c.text_area :content %></p>
-                <%= c.submit '送信' %>
-              <% end %>
-            </div>
-
-
+              <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
+                <div class="text-area__wrapper">
+                  <%= form_with model: comment, url: doctor_comment_path(comment), local: true do |c| %>
+                <div class="field">
+                    <%= c.text_area :content, placeholder: '内容' %>
+                    <%= c.label :content, "内容", class:"label" %>
+                  </div>
+                    <%= c.submit '送信' %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
           <% end %>
         </div>
@@ -48,10 +50,18 @@
         <div class="opinion__comment">
           <h1 class="opinion__comment__name"><%= comment.patient.family_name + ' ' + comment.patient.first_name %></h1>
           <p class="opinion__comment__time"><%= comment.created_at %></p>
-          <p class="opinion__comment__content"><%= comment.content %></p>
+          <p class="opinion__comment__content"><%= safe_join(comment.content.split("\n"),tag(:br)) %></p>
           <% if patient_signed_in? %>
             <% if comment.patient_id == current_patient.id %>
-            <%= link_to edit_patient_comment_path(comment) do %><p class="opinion__comment__edit post-button">編集</p><% end %>
+              <p class="opinion__comment__edit post-button opinion__comment-edit__toggle-<%= comment.id %>">編集</p>
+              <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
+                <div class="text-area__wrapper">
+                  <%= form_with model: comment, url: patient_comment_path(comment), local: true do |c| %>
+                    <p>内容<%= c.text_area :content %></p>
+                    <%= c.submit '送信' %>
+                  <% end %>
+                </div>
+              </div>
             <% end %>
           <% end %>
         </div>
@@ -68,22 +78,26 @@
       <p>コメントする</p>
     </div>
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
-      <%= form_with model: DoctorComment.new, local: true do |c| %>
-        <p>医師コメント内容<%= c.text_area :content %></p>
-        <%= c.hidden_field :opinion_id, value: opinion.id %>
-        <%= c.submit '送信' %>
-      <% end %>
+      <div class="text-area__wrapper">
+        <%= form_with model: DoctorComment.new, local: true do |c| %>
+          <p>医師コメント内容<%= c.text_area :content %></p>
+          <%= c.hidden_field :opinion_id, value: opinion.id %>
+          <%= c.submit '送信' %>
+        <% end %>
+      </div>
     </div>
   <% elsif patient_signed_in? %>
     <div class="opinion__comment__toggle-<%= opinion.id %>">
       <p>コメントする</p>
     </div>
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
-      <%= form_with model: PatientComment.new, local: true do |c| %>
-        <p>患者コメント内容<%= c.text_area :content %></p>
-        <%= c.hidden_field :opinion_id, value: opinion.id %>
-        <%= c.submit '送信' %>
-      <% end %>
+      <div class="text-area__wrapper">
+        <%= form_with model: PatientComment.new, local: true do |c| %>
+          <p>患者コメント内容<%= c.text_area :content %></p>
+          <%= c.hidden_field :opinion_id, value: opinion.id %>
+          <%= c.submit '送信' %>
+        <% end %>
+      </div>
     </div>
   <% end %>
 </div>

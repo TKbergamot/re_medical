@@ -13,6 +13,8 @@ class CreateHospitals < ActiveRecord::Migration[5.2]
       t.string :homepage
       t.string :description
       t.string :image
+      t.float :latitude
+      t.float :longitude
 
       t.timestamps
     end

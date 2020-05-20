@@ -1,73 +1,86 @@
-<h2>Sign up</h2>
+<div class="login-form__box">
+  <h1 class="login-form__title">Re:MEDICAL</h1>
+  <p class="login-form__text">SECOND OPINION MORE EASILY.</p>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :family_name %>
-    <%= f.text_field :family_name, autofocus:true, autocomplete: "family_name" %>
+    <%= f.text_field :family_name, autofocus:true, autocomplete: "family_name", placeholder:"苗字" %>
+    <%= f.label :family_name, '苗字', class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
+    <%= f.text_field :first_name, autocomplete: "first_name", placeholder:'名前' %>
+    <%= f.label :first_name, "名前", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :family_name_kana %>
-    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana" %>
+    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana", placeholder: "ミョウジ" %>
+    <%= f.label :family_name_kana, "ミョウジ", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name_kana %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder:"ナマエ" %>
+    <%= f.label :first_name_kana, "ナマエ", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :date_of_birth %>
-    <%= f.date_select :date_of_birth, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), autocomplete: "date_of_birth" %>
+  <div class="select-wrapper">
+    <%= f.date_select :date_of_birth, {use_month_numbers: true, start_year: 1900, end_year: (Time.now.year)}, {class:"select-date"} %>
+    </div>
+    <%= f.label :date_of_birth, "誕生日", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :gender %>
-    <%= f.select :gender, [['男性', 0],['女性', 1]], autocomplete: "gender" %>
+      <%= f.select :gender, [['男性', 0],['女性', 1]] %>
+    <%= f.label :gender, "性別", class:"label" %>
+  </div>
+
+  <div class="prof__text-area__wrapper">
+    <div class="field">
+      <%= f.text_area :description, autocomplete: "desctiption", placeholder:"プロフィール文" %>
+      <%= f.label :description, "プロフィール文", class:"label" %>
+    </div>
   </div>
 
   <div class="field">
-    <%= f.label :description %>
-    <%= f.text_area :description, autocomplete: "desctiption" %>
+    <%= f.collection_select(:department_id, Department.all, :id, :name) %>
+    <%= f.label :department_id, "診療科", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :registration_number %>
-    <%= f.text_field :registration_number, autocomplete: "registration_number" %>
-  </>
-
-  <div class="field">
-    <%= f.label :registration_date %>
-    <%= f.date_select :registration_date, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), autocomplete: "registration_date" %>
+    <%= f.number_field :registration_number, autocomplete: "registration_number", placeholder:"医師登録番号" %>
+    <%= f.label :registration_number, "医師登録番号", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="select-wrapper">
+      <%= f.date_select :registration_date, use_month_numbers: true, start_year: 1900, end_year: (Time.now.year), autocomplete: "registration_date" %>
+    </div>
+    <%= f.label :registration_date, "医師登録年月日", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+    <%= f.label :email, "メールアドレス", class:"label" %>
+  </div>
+
+  <div class="field">
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード" %>
+    <%= f.label :password, "パスワード", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード（確認用）" %>
+    <%= f.label :password_confirmation, "パスワード（確認用）", class:"label" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "登録" %>
   </div>
 <% end %>
 

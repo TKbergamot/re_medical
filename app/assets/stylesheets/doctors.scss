@@ -22,8 +22,8 @@
   &__box {
     position: relative;
     background-color: #fff;
-    border: 2px solid #eee;
     border-radius: 0.5rem;
+    filter: drop-shadow(1rem 1rem 1rem #0004);
     padding: 6rem 1rem 2rem;
     margin: 0 1rem 1rem 0;
   }
@@ -51,7 +51,7 @@
     top: 2rem;
     left: 18rem;
     padding: 0.2rem 0.8rem;
-    background-color: #818181;
+    background-color: #aaa;
     border-radius: 1rem;
   }
   &__description {
@@ -81,6 +81,8 @@
     &-image {
       width: 4rem;
       height: 4rem;
+      object-fit: contain;
+      background-color: #fff;
       border-radius: 50%;
     }
     &-name {

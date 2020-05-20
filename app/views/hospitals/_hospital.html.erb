@@ -1,6 +1,6 @@
 <%= link_to hospital_path(hospital) do %>
   <div class="hospital-list">
-    <%= image_tag hospital.image.thumb.to_s, class:"hospital-list__image" %>
+    <%= image_tag hospital.image.to_s, class:"hospital-list__image" %>
     <div class="hospital-list__text">
       <h1 class="hospital-list__text__name"><%= hospital.name %></h1>
       <h2 class="hospital-list__text__address"><%= hospital.address %></h2>

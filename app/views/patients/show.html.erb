@@ -1,14 +1,24 @@
-<h1>マイページ</h1>
-
-<p><%= @patient.family_name + ' ' + @patient.first_name %>
-  <small>(<%= @patient.family_name_kana + ' ' + @patient.first_name_kana %>)</small></p>
-<p><%= @patient.date_of_birth %></p>
-<p><%= @patient.gender %></p>
-
-<% if patient_signed_in? %>
-  <% if @patient == current_patient %>
-    <%= link_to edit_patient_registration_path do %>編集<% end %>
-  <% end %>
-<% end %>
-
-<%= link_to new_post_path do %>新規投稿<% end %>
+<div class="patient-container">
+  <div class="patient-head">
+  </div>
+  <div class="patient-main">
+    <div class="patient-main__left">
+      <div class="patient-info__box">
+        <h1 class="patient-info__name"><%= @patient.family_name + ' ' + @patient.first_name %>
+          <small>(<%= @patient.family_name_kana + ' ' + @patient.first_name_kana %>)</small>
+        </h1>
+        <p class="patient-info__birth-date"><%= @patient.date_of_birth %></p>
+        <p clcass="patient-info__gender"><%= @patient.gender %></p>
+    <%# お気に入り病院、投稿一覧を追加 %>
+        <% if patient_signed_in? %>
+          <% if @patient == current_patient %>
+            <%= link_to edit_patient_registration_path do %><p class="post-button">編集</p><% end %>
+          <% end %>
+        <% end %>
+        <%= link_to new_post_path do %><p class="post-button">新規投稿</p><% end %>
+      </div>
+    </div>
+      <div class="patient-main__left">
+    </div>
+  </div>
+</div>

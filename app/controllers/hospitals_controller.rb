@@ -14,6 +14,8 @@ class HospitalsController < ApplicationController
   def create
     @hospital = Hospital.new(hospital_params)
     @hospital.save
+    current_doctor.hospital_id = @hospital.id
+    current_doctor.save
     redirect_to @hospital
   end
 

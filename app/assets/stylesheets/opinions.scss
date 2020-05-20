@@ -2,6 +2,10 @@
 }
 
 .opinion {
+  &-box {
+    border-top: 1px solid #ccc;
+    padding-top: 2rem;
+  }
   &__prof-box {
     display: grid;
     grid-template-columns: 3rem 1fr;
@@ -32,7 +36,7 @@
     display: block;
   }
   &__content {
-    margin-top: 1rem;
+    margin: 1rem;
   }
   &__edit {
     float: right;
@@ -67,8 +71,7 @@
     }
 
     &__content {
-      margin-left: 0.5rem;
-      margin-top: 1rem;
+      margin: 1rem 0 1rem 0.5rem;
     }
 
     &__edit {

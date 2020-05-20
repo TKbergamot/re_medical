@@ -8,5 +8,5 @@ class Doctor < ApplicationRecord
   has_many :opinions
   has_many :doctor_comments
   belongs_to :department
-  belongs_to :hospital
+  belongs_to :hospital, optional: true
 end

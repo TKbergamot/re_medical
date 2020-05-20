@@ -1,36 +1,39 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+<div class="login-form__box">
+  <h1 class="login-form__title">Re:MEDICAL</h1>
+  <p class="login-form__text">SECOND OPINION MORE EASILY.</p>
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-    <div class="field">
-    <%= f.label :family_name %>
-    <%= f.text_field :family_name, autofocus:true, autocomplete: "family_name" %>
+  <div class="field">
+    <%= f.text_field :family_name, autofocus:true, autocomplete: "family_name", placeholder: '苗字' %>
+    <%= f.label :family_name, '苗字', class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name %>
-    <%= f.text_field :first_name, autocomplete: "first_name" %>
+    <%= f.text_field :first_name, autocomplete: "first_name", placeholder:'名前' %>
+    <%= f.label :first_name, "名前", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :family_name_kana %>
-    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana" %>
+    <%= f.text_field :family_name_kana, autocomplete: "family_name_kana", placeholder: "ミョウジ" %>
+    <%= f.label :family_name_kana, "ミョウジ", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :first_name_kana %>
-    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana" %>
+    <%= f.text_field :first_name_kana, autocomplete: "first_name_kana", placeholder:"ナマエ" %>
+    <%= f.label :first_name_kana, "ナマエ", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :phone_number %>
-    <%= f.text_field :phone_number, autocomplete: "phone_number" %>
+    <%= f.text_field :phone_number, autocomplete: "phone_number", placeholder: '電話番号' %>
+    <%= f.label :phone_number, "電話番号", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>
+    <%= f.label :email, "メールアドレス", class:"label" %>
   </div>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -38,26 +41,26 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
     <% if @minimum_password_length %>
       <br />
       <em><%= @minimum_password_length %> characters minimum</em>
     <% end %>
+    <%= f.password_field :password, autocomplete: "new-password", placeholder:"パスワード" %>
+    <%= f.label :password, "パスワード変更", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"パスワード（確認用）" %>
+    <%= f.label :password_confirmation, "パスワード変更（確認用）", class:"label" %>
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-    <%= f.password_field :current_password, autocomplete: "current-password" %>
+    <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"元のパスワード" %>
+    <%= f.label :current_password, "元のパスワード", class:"label" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Update" %>
+    <%= f.submit "変更" %>
   </div>
 <% end %>
 
@@ -66,3 +69,4 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+</div>
