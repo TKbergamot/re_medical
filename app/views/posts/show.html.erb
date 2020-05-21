@@ -9,7 +9,7 @@
           <p class="post-info__detail"><%= safe_join(@post.detail.split("\n"),tag(:br)) %></p>
           <div class="post-info__refferal">
             <% @post.refferal.each do |r| %>
-              <%= image_tag r.thumb.to_s %>
+              <%= image_tag r.to_s %>
             <% end %>
           </div>
         </div>

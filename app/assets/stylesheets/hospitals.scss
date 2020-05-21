@@ -128,7 +128,6 @@
     background-color: #fff;
     padding: 2rem 1rem;
     margin: 0 1rem 1rem 0;
-    grid-template-columns: 64px 8fr 1fr;
     filter: drop-shadow(1rem 1rem 1rem #0004);
     border-radius: 0.5rem;
   }
@@ -147,7 +146,6 @@
     display: grid;
     grid-template-columns: 4rem 1fr;
     padding: 0.5rem 0;
-    border-radius: 0.5rem;
     transition: all 0.2s;
     &:hover {
       filter: drop-shadow(0.2rem 0.2rem 0.1rem #0004);
@@ -209,4 +207,95 @@
 
 #hospital-show__map {
   height: 400px;
+}
+
+@media screen and (max-width: 560px) {
+  .hospital-container {
+    width: 100%;
+    margin: 0;
+  }
+
+  .hospital-main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .hospital-list {
+    padding: 1.5rem 1rem;
+    margin: 0 0 2rem 0;
+    border-radius: 0;
+    &__text {
+      &__name {
+        font-size: 1.2rem;
+        padding-bottom: -0.3rem;
+        margin-bottom: 0;
+      }
+      &__address {
+        font-size: 0.8rem;
+        padding-bottom: 0.5rem;
+      }
+    }
+    &::after {
+      right: 1.5rem;
+    }
+    &:hover::after {
+      right: 1rem;
+    }
+    &:hover {
+      filter: drop-shadow(1rem 1rem 1rem #0007);
+    }
+    &:active {
+      filter: drop-shadow(1rem 1rem 1rem #0000);
+    }
+  }
+
+  .hospital-show {
+    display: block;
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    height: 8rem;
+    background-color: #0005;
+    backdrop-filter: blur(3px);
+    grid-template-columns: 1fr;
+    &__intro {
+      grid-column: 2;
+      display: grid;
+      grid-template-columns: 25% 1fr;
+    }
+    &__text {
+      margin: auto 0;
+    }
+    &__address {
+      font-size: 0.8rem;
+    }
+
+    &__detail {
+      background-color: #fff;
+      padding: 2rem 1rem;
+      margin: 0;
+      filter: none;
+      border-radius: 0;
+    }
+
+    &__doctor {
+      &::after {
+        right: 1rem;
+      }
+      &:hover::after {
+        right: 0.5rem;
+      }
+    }
+  }
+
+  .hospital-new__box {
+    background-color: #fff;
+    padding: 2rem 1rem;
+    margin: 0;
+    border-radius: 0;
+    filter: none;
+  }
+
+  #hospital-show__map {
+    height: 50vh;
+  }
 }

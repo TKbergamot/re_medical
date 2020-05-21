@@ -2,15 +2,11 @@
     <h1 class="home-top__title">Re:MEDICAL</h1>
     <p class="home-top__title__sub">ONLINE SECOND OPINION SERVICE</p>
     <p class="home-top__intro">SECOND OPINION MORE EASILY.</p>
-    <%= link_to about_path do %>
-      <p class="home-top__about-btn btn">ABOUT</p>
-    <% end %>
+    <%= link_to 'ABOUT', about_path, class:"home-top__about-btn btn" %>
     <div class="home-top__login">
-      <%= link_to new_patient_session_path do %>
-        <p class="home-top__patient-btn btn">PATIENT</p>
-      <% end %>
-      <%= link_to new_doctor_session_path do %>
-        <p class="home-top__doctor-btn btn">DOCTOR</p>
-      <% end %>
+      <div class="home-top__login-btn">
+        <%= link_to 'PATIENT', new_patient_session_path, class:"home-top__patient-btn btn" %>
+        <%= link_to 'DOCTOR', new_doctor_session_path, class:"home-top__doctor-btn btn" %>
+      </div>
     </div>
   </div>

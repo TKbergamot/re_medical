@@ -11,9 +11,12 @@
     <% if doctor_signed_in? %>
       <% if opinion.doctor_id == current_doctor.id %>
         <p class="opinion__edit post-button opinion-edit__toggle-<%= opinion.id %>">編集</p>
-        <div class="opinion-edit__form-<%= opinion.id %> form-toggle">
+        <div class="opinion-edit__form-<%= opinion.id %> form-toggle text-area__wrapper"style="margin: 0 1rem;">
           <%= form_with model: opinion, url: opinion_path(opinion), local: true do |f| %>
-            <p>内容<%= f.text_area :content %></p>
+            <div class="field">
+              <%= f.text_area :content, placeholder:"内容" %>
+              <%= f.label :content, '内容', class:"label" %>
+            </div>
             <%= f.submit '送信' %>
           <% end %>
         </div>
@@ -35,7 +38,7 @@
               <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
                 <div class="text-area__wrapper">
                   <%= form_with model: comment, url: doctor_comment_path(comment), local: true do |c| %>
-                <div class="field">
+                  <div class="field">
                     <%= c.text_area :content, placeholder: '内容' %>
                     <%= c.label :content, "内容", class:"label" %>
                   </div>
@@ -57,7 +60,10 @@
               <div class="opinion__comment-edit__form-<%= comment.id %> form-toggle">
                 <div class="text-area__wrapper">
                   <%= form_with model: comment, url: patient_comment_path(comment), local: true do |c| %>
-                    <p>内容<%= c.text_area :content %></p>
+                  <div class="field">
+                    <%= c.text_area :content, placeholder:"内容" %>
+                    <%= c.label :content, "内容", class:"label" %>
+                  </div>
                     <%= c.submit '送信' %>
                   <% end %>
                 </div>

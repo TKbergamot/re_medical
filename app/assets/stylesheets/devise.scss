@@ -52,3 +52,15 @@
     left: 1rem;
   }
 }
+
+@media screen and (max-width: 560px) {
+  .login-form {
+    &__box {
+      margin: 0;
+      width: 100%;
+      filter: none;
+      padding: 2rem 1rem;
+      border-radius: 0;
+    }
+  }
+}

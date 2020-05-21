@@ -73,7 +73,6 @@
     display: grid;
     grid-template-columns: 4rem 1fr;
     padding: 0.5rem 0;
-    border-radius: 0.5rem;
     transition: all 0.2s;
     &:hover {
       filter: drop-shadow(0.2rem 0.2rem 0.1rem #0004);
@@ -106,6 +105,58 @@
       border-top: 2px solid #0099ff;
       border-right: 2px solid #0099ff;
       right: 1.5rem;
+    }
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .doctor-container {
+    width: 100%;
+    margin: 0;
+  }
+  .doctor-main {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .doctor-head {
+    width: 100vw;
+    margin: 0 calc(50% - 50vw);
+    height: 8rem;
+    background-color: #0005;
+    backdrop-filter: blur(3px);
+  }
+
+  .doctor-info {
+    &__box {
+      position: relative;
+      background-color: #fff;
+      border-radius: 0;
+      filter: none;
+      padding: 5rem 1rem 2rem;
+      margin: 0;
+    }
+    &__image {
+      top: -3rem;
+      left: 1rem;
+      width: 6rem;
+      height: 6rem;
+      padding: 0.2rem;
+    }
+    &__department {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    &__hospitals {
+      margin: 2rem 0;
+    }
+    &__hospital {
+      &::after {
+        right: 1rem;
+      }
+      &:hover::after {
+        right: 0.5rem;
+      }
     }
   }
 }
