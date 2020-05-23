@@ -2,7 +2,7 @@
   <div class="opinion__prof-box">
     <%= image_tag opinion.doctor.image.thumb.to_s, class:"opinion__image" %>
     <div class="opinion__name-box">
-      <h1 class="opinion__name"><%= opinion.doctor.family_name + ' ' + opinion.doctor.first_name %></h1>
+      <h1 class="opinion__name"><%= link_to hospital_path(opinion.doctor.hospital) do %><%= opinion.doctor.family_name + ' ' + opinion.doctor.first_name %> <small>-<%= opinion.doctor.hospital.name %>-</small><% end %></h1>
       <p class="opinion__time"><%= opinion.created_at %></p>
     </div>
   </div>
@@ -42,7 +42,7 @@
                     <%= c.text_area :content, placeholder: '内容' %>
                     <%= c.label :content, "内容", class:"label" %>
                   </div>
-                    <%= c.submit '送信' %>
+                  <%= c.submit '送信' %>
                   <% end %>
                 </div>
               </div>
@@ -64,7 +64,7 @@
                     <%= c.text_area :content, placeholder:"内容" %>
                     <%= c.label :content, "内容", class:"label" %>
                   </div>
-                    <%= c.submit '送信' %>
+                  <%= c.submit '送信' %>
                   <% end %>
                 </div>
               </div>
@@ -86,7 +86,10 @@
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
       <div class="text-area__wrapper">
         <%= form_with model: DoctorComment.new, local: true do |c| %>
-          <p>医師コメント内容<%= c.text_area :content %></p>
+          <div class="field">
+            <%= c.text_area :content, placeholder: "コメント内容" %>
+            <%= c.label :content, "コメント内容", class:"label" %>
+          </div>
           <%= c.hidden_field :opinion_id, value: opinion.id %>
           <%= c.submit '送信' %>
         <% end %>
@@ -99,7 +102,10 @@
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
       <div class="text-area__wrapper">
         <%= form_with model: PatientComment.new, local: true do |c| %>
-          <p>患者コメント内容<%= c.text_area :content %></p>
+          <div class="field">
+            <%= c.text_area :content, placeholder:"コメント内容" %>
+            <%= c.label :content, "コメント内容", class:"label" %>
+          </div>
           <%= c.hidden_field :opinion_id, value: opinion.id %>
           <%= c.submit '送信' %>
         <% end %>

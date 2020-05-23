@@ -156,6 +156,7 @@ textarea {
 .text-area__wrapper {
   position: relative;
   pointer-events: none;
+  padding-top: 0.9rem;
   &::before {
     display: block;
     content: "";
@@ -177,29 +178,6 @@ textarea {
     border-left: 2px solid #515151;
     top: 0;
     left: 0;
-  }
-}
-
-input[type="submit" i] {
-  pointer-events: auto;
-  outline: none;
-  -webkit-appearance: push-button;
-  user-select: none;
-  white-space: pre;
-  align-items: flex-start;
-  text-align: center;
-  background-color: buttonface;
-  box-sizing: border-box;
-  display: inline-block;
-  cursor: pointer;
-  color: lighten(#515151, 30%);
-  padding: 0.2rem 0.7rem;
-  border: 2px solid lighten(#515151, 30%);
-  border-radius: 2rem;
-  transition: all 0.2s;
-  &:hover {
-    color: #0099ff;
-    border: 2px solid #0099ff;
   }
 }
 
@@ -236,5 +214,29 @@ input[type="submit" i] {
   }
   &:active::after {
     transform: rotate(-45deg);
+  }
+}
+
+.button-default {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  outline: 0;
+  border-radius: 0.5rem;
+  text-align: center;
+  letter-spacing: 0.1rem;
+  background: #0099ff;
+  color: #fff;
+  font-weight: 600;
+  border: 1px solid #0099ff;
+  cursor: pointer;
+  transition: all 0.2s;
+  filter: drop-shadow(0 4px 3px #0000);
+  &:hover {
+    filter: drop-shadow(0 4px 3px #0004);
+    transform: translateY(-1px);
+  }
+  &:active {
+    filter: drop-shadow(0 4px 3px #0000);
+    transform: translateY(0);
   }
 }

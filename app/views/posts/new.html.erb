@@ -7,7 +7,7 @@
   <%= form_with model: Post.new,  local: true do |f| %>
     <div class="field">
       <%= f.file_field :refferal, multiple: true %>
-      <%= f.label :refferal, "紹介状等", class:"label" %>
+      <%= f.label :refferal, "紹介状、検査資料など（複数可能）", class:"label" %>
     </div>
 
     <div class="field">
@@ -23,7 +23,7 @@
     <div class="prof__text-area__wrapper">
       <div class="field">
         <%= f.text_area :detail, autocomplete:"detail", placeholder:"症状詳細等" %>
-        <%= f.label :detail, "病状詳細等", class:"label" %>
+        <%= f.label :detail, "病状の詳細、聞きたいことなど", class:"label" %>
       </div>
     </div>
 

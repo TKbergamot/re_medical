@@ -4,17 +4,18 @@
         <h1 class="post-info__desease-name"><%= post.desease_name %></h1>
         <h5 class="post-info__name"><%= post.patient.family_name + ' ' + post.patient.first_name %></h5>
         <p class="post-info__time"><%= post.created_at %></p>
+        <span class="post-info__department"><%= post.department.name %></span>
         <p class="post-info__detail"><%= post.detail %></p>
         <div class="post-info__refferal">
           <% post.refferal.each do |r| %>
-            <%= image_tag r.thumb.to_s %>
+            <%= image_tag r.thumb.url %>
           <% end %>
         </div>
       </div>
     <div class="post-bottom">
       <div class="post-bottom__comment-size"><i class="far fa-comment"></i>　<%= post.opinions.size %></div>
-      <div class="post-bottom__like-size"><i class="far fa-heart"></i>　0</div>
-      <div class="post-bottom__button"><div class="post-button">コメントする</div></div>
+      <div class="post-bottom__like-size"><i class="far fa-star"></i>　0</div>
+      <div class="post-bottom__button"><div class="post-button">みる</div></div>
     </div>
   </div>
 <% end %>

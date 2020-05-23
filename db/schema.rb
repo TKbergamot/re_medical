@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_06_124508) do
+ActiveRecord::Schema.define(version: 2020_05_23_033433) do
+
+  create_table "categorizations", force: :cascade do |t|
+    t.integer "hospital_id"
+    t.integer "department_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["department_id"], name: "index_categorizations_on_department_id"
+    t.index ["hospital_id"], name: "index_categorizations_on_hospital_id"
+  end
 
   create_table "departments", force: :cascade do |t|
     t.string "name"
@@ -62,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_05_06_124508) do
     t.string "administer"
     t.string "administer_kana"
     t.string "post_code"
+    t.string "prefecture"
     t.string "address"
     t.string "phone_number"
     t.string "homepage"

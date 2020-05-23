@@ -1,6 +1,7 @@
 <div class="login-form__box">
   <h1 class="login-form__title">Re:MEDICAL</h1>
   <p class="login-form__text">SECOND OPINION MORE EASILY.</p>
+  <p class="login-form__text">患者様用ログインフォーム</p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
@@ -13,8 +14,8 @@
       <%= f.label :password, "パスワード", class:"label" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "ログイン" %>
+    <div class="field" style="margin-top:2rem;">
+      <%= f.submit "ログイン", class:"button-default" %>
     </div>
   <% end %>
 

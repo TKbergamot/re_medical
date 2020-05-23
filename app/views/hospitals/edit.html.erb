@@ -65,6 +65,9 @@
               <%= f.file_field :image, autocomplete: "image", placeholder: "病院画像" %>
               <%= f.label :image, "病院画像", class:"label" %>
             </div>
+
+              <%= f.collection_check_boxes :department_ids, Department.all, :id, :name %>
+              <%= f.label :department_ids, "担当科", class:"label" %>
           <%= f.submit '編集' %>
         <% end %>
       </div>

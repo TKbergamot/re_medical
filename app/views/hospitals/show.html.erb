@@ -28,13 +28,6 @@
         <div class="hospital-show__info">
           <h5 class="hospital-show__info-text">詳細情報</h5>
           <div id='hospital-show__map'></div>
-
-          <style>
-          #hospital-show__map{
-            height: 400px;
-          }
-          </style>
-
           <script type="text/javascript">
             handler = Gmaps.build('Google');
             handler.buildMap({ provider: { scrollwheel: false }, internal: {id: 'hospital-show__map'}}, function(){

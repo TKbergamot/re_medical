@@ -3,8 +3,15 @@
     <%= image_tag hospital.image.to_s, class:"hospital-list__image" %>
     <div class="hospital-list__text">
       <h1 class="hospital-list__text__name"><%= hospital.name %></h1>
-      <h2 class="hospital-list__text__address"><%= hospital.address %></h2>
+      <h2 class="hospital-list__text__address"><%= hospital.prefecture + hospital.address %></h2>
       <p class="hospital-list__text__description"><%= hospital.description %></p>
+      <div class="hospital-list__text__department-box">
+        <% hospital.departments.each do |department| %>
+          <span class="hospital-list__text__department">
+            <%= department.name %>
+          </span>
+        <% end %>
+      </div>
     </div>
   </div>
 <% end %>

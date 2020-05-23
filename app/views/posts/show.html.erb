@@ -6,6 +6,7 @@
           <h1 class="post-info__desease-name"><%= @post.desease_name %></h1>
           <h5 class="post-info__name"><%= @post.patient.family_name + ' ' + @post.patient.first_name %></h5>
           <p class="post-info__time"><%= @post.created_at %></p>
+          <span class="post-info__department"><%= @post.department.name %></span>
           <p class="post-info__detail"><%= safe_join(@post.detail.split("\n"),tag(:br)) %></p>
           <div class="post-info__refferal">
             <% @post.refferal.each do |r| %>

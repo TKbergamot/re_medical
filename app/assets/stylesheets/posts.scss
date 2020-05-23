@@ -31,6 +31,17 @@
     color: lighten(#515151, 30%);
     margin-right: 1rem;
   }
+  &__department {
+    color: #fff;
+    font-size: 0.8rem;
+    font-weight: bold;
+    letter-spacing: 0.05rem;
+    top: 2rem;
+    left: 18rem;
+    padding: 0.2rem 0.8rem;
+    background-color: #aaa;
+    border-radius: 1rem;
+  }
   &__detail {
     margin-top: 1rem;
     margin-left: calc(0.5rem + 2px);

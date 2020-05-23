@@ -35,12 +35,17 @@
             </div>
 
             <div class="field">
-              <%= f.number_field :post_code, autocomplete: "post_code", placeholder: "郵便番号" %>
+              <%= f.number_field :post_code, autocomplete: "post_code", placeholder: "郵便番号", class:"postcode", id:"post_code" %>
               <%= f.label :post_code, "郵便番号", class:"label" %>
             </div>
 
             <div class="field">
-              <%= f.text_field :address, autocomplete: "address", placeholder: "住所" %>
+              <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, include_blank: true, class:"address" %>
+              <%= f.label :prefecture, "都道府県", class:"label" %>
+            </div>
+
+            <div class="field">
+              <%= f.text_field :address, autocomplete: "address", placeholder: "住所", class:"address", id:"address" %>
               <%= f.label :address, "住所", class:"label" %>
             </div>
 

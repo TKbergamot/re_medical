@@ -72,6 +72,8 @@ gem 'dotenv-rails'
 gem 'jquery-rails'
 gem 'geocoder'
 gem 'gmaps4rails'
+gem 'jp_prefecture'
+gem 'ransack'
 
 group :production do
   gem 'mysql2'

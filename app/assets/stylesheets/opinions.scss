@@ -46,14 +46,15 @@
   }
 
   &__comment {
-    margin-bottom: 2rem;
+    padding: 0.5rem 1rem;
+    background-color: #f2f2f2;
     &::after {
       content: "";
       clear: both;
       display: block;
     }
     &-box {
-      margin: 2rem 1rem;
+      margin: 2rem 0;
     }
     &-size {
       font-size: 0.9rem;

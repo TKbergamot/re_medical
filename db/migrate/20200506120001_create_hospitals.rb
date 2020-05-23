@@ -8,6 +8,7 @@ class CreateHospitals < ActiveRecord::Migration[5.2]
       t.string :administer
       t.string :administer_kana
       t.string :post_code
+      t.string :prefecture
       t.string :address
       t.string :phone_number
       t.string :homepage

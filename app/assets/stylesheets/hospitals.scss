@@ -48,6 +48,18 @@
       letter-spacing: 0.05rem;
       padding-bottom: 0.3rem;
     }
+    &__department-box {
+      margin-top: 1rem;
+    }
+    &__department {
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 0.2rem 0.8rem;
+      margin: 0.2rem;
+      background-color: #aaa;
+      border-radius: 1rem;
+    }
   }
   &::after {
     display: block;
@@ -197,6 +209,13 @@
   }
 }
 
+.hospital-search__container {
+  background-color: #fff;
+  padding: 2rem 0;
+  border-radius: 0.5rem;
+  filter: drop-shadow(1rem 1rem 1rem #0004);
+}
+
 .hospital-new__box {
   background-color: #fff;
   padding: 2rem 1rem;
@@ -297,5 +316,10 @@
 
   #hospital-show__map {
     height: 50vh;
+  }
+
+  .hospital-search__container {
+    border-radius: 0;
+    filter: none;
   }
 }

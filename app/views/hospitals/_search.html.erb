@@ -1,1 +1,18 @@
-<p>さーちだよ</p>
+<div class="hospital-search__container">
+  <p class="login-form__text">医療機関を検索</p>
+  <%= search_form_for @q do |f| %>
+    <div class="field">
+      <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, include_blank: "都道府県を選択", class:"address" %>
+      <%= f.label :prefecture, "都道府県", class:"label" %>
+    </div>
+
+    <div class="field">
+      <%= f.collection_select :departments_id_eq, Department.all, :id, :name, include_blank: "診療科を選択" %>
+      <%= f.label :department, "診療科", class:"label" %>
+    </div>
+
+    <div class="field" style="margin-top:2rem;">
+      <%= f.submit "医療機関を検索", class:"button-default" %>
+    </div>
+  <% end %>
+</div>
