@@ -1,7 +1,21 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_q
+
+  def set_q
+    @q = Hospital.ransack(params[:q])
+  end
 
   def after_sign_in_path_for(resource)
+    case resource
+    when Doctor
+      doctor_path(current_doctor)
+    when Patient
+      patient_path
+    end
+  end
+
+  def after_update_path_for(resource)
     case resource
     when Doctor
       doctor_path(current_doctor)

@@ -1,0 +1,14 @@
+<div class="hospital-search__container">
+  <p class="search-form__text"><span>オピニオン依頼を検索</span></p>
+  <%= search_form_for @q do |f| %>
+
+    <div class="field">
+      <%= f.collection_select :department_id_eq, Department.all, :id, :name, include_blank: "診療科を選択" %>
+      <%= f.label :department, "診療科", class:"label" %>
+    </div>
+
+    <div class="field" style="margin-top:2rem;">
+      <%= f.submit "オピニオン依頼を検索", name: nil, class:"button-default" %>
+    </div>
+  <% end %>
+</div>

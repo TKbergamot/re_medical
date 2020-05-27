@@ -1,0 +1,19 @@
+<div class="footer-nav">
+  <ul class="footer-nav__list">
+    <li>
+      <%= link_to "セカンドオピニオン依頼", new_post_path %>
+    </li>
+    <li>
+      <%= link_to "病院を探す", hospitals_path %>
+    </li>
+    <li>
+      <% if doctor_signed_in? %>
+        <%= link_to "マイページ", doctor_path(current_doctor) %>
+      <% elsif patient_signed_in? %>
+        <%= link_to "マイページ", patient_path %>
+      <% else %>
+        <%= link_to "ログイン", root_path %>
+      <% end %>
+    </li>
+  </ul>
+</div>

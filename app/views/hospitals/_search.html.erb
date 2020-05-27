@@ -1,6 +1,6 @@
 <div class="hospital-search__container">
-  <p class="login-form__text">医療機関を検索</p>
-  <%= search_form_for @q do |f| %>
+  <p class="search-form__text"><span>医療機関を検索</span><p>
+  <%= search_form_for @q, url: hospitals_path do |f| %>
     <div class="field">
       <%= f.collection_select :prefecture_eq, JpPrefecture::Prefecture.all, :name, :name, include_blank: "都道府県を選択", class:"address" %>
       <%= f.label :prefecture, "都道府県", class:"label" %>
@@ -12,7 +12,7 @@
     </div>
 
     <div class="field" style="margin-top:2rem;">
-      <%= f.submit "医療機関を検索", class:"button-default" %>
+      <%= f.submit "医療機関を検索", name: nil, class:"button-default" %>
     </div>
   <% end %>
 </div>

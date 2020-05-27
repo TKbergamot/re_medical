@@ -1,0 +1,15 @@
+.tag {
+  background-color: #0099ff;
+  display: inline-block;
+  color: #ffffff;
+  margin: 0.5rem 0;
+  padding: 0.3rem 1.5rem 0.3rem 1.5rem;
+  clip-path: polygon(
+    0 80%,
+    1rem 0,
+    calc(100% - 0.5rem) 0,
+    100% 20%,
+    calc(100% - 1rem) 100%,
+    0.5rem 100%
+  );
+}

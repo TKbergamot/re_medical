@@ -11,6 +11,13 @@
   <div class="hospital-main">
     <div class="hospital-main__left">
       <div class="hospital-show__detail">
+        <div class="hospital-show__department-box">
+          <% @hospital.departments.each do |department| %>
+            <span class="hospital-show__department tag">
+              <%= department.name %>
+            </span>
+          <% end %>
+        </div>
         <div class="hospital-show__description">
           <p><%= simple_format @hospital.description %></p>
         </div>
@@ -48,13 +55,15 @@
           <p><%= @hospital.administer %></p>
           <p><i class="fas fa-map-marker-alt"></i> <%= @hospital.post_code %> <%= @hospital.address %></p>
           <p><i class="fas fa-phone-alt"></i> <%= @hospital.phone_number %></p>
-          <%= link_to @hospital.homepage do %><i class="fas fa-globe"></i> <%= @hospital.homepage %>
+          <% if @hospital.homepage.present? %>
+            <%= link_to @hospital.homepage do %><i class="fas fa-globe"></i> <%= @hospital.homepage %>
+            <% end %>
           <% end %>
         </div>
       </div>
     </div>
     <div class="hospital-main__right">
-      <%= render "hospitals/reservation" %>
+      <%= render "hospitals/search" %>
     </div>
   </div>
 </div>

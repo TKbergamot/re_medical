@@ -1,7 +1,17 @@
 # frozen_string_literal: true
 class PostsController < ApplicationController
+
   def index
-    @posts = Post.all.includes(:opinions).order(created_at: 'DESC')
+    @q = Post.ransack(params[:q])
+    @posts = @q.result(distinct: true)
+    @top = "オピニオン依頼一覧"
+    if params[:q].present?
+      if params[:q][:department_id_eq].present?
+      @top = Department.find(params[:q][:department_id_eq]).name + "のオピニオン依頼"
+      end
+    else
+      @top = "オピニオン依頼一覧"
+    end
   end
 
   def show

@@ -1,9 +1,21 @@
 <div class="post-container">
+  <div class="hospital-show">
+    <div class="hospital-show__intro">
+      <%= image_tag "dna.jpg", class:"hospital-show__image" %>
+      <div class="hospital-show__text">
+        <p class="hospital-show__name">
+          <%= @top %>
+        </p>
+        </p>
+      </div>
+    </div>
+  </div>
   <div class="post-main">
     <div class="post-main__left">
       <%= render @posts %>
     </div>
     <div class="post-main__right">
+      <%= render 'posts/search'%>
     </div>
   </div>
 </div>

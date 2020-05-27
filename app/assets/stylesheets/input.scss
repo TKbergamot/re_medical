@@ -22,6 +22,10 @@ input[type="url"] {
   outline: none;
   transition: all 0.2s;
 }
+input[type="submit" i] {
+  -webkit-appearance: normal;
+  pointer-events: auto;
+}
 
 .field {
   display: flex;
@@ -41,6 +45,11 @@ input[type="url"] {
     transform: translateY(0) scale(0.8);
     color: #0099ff;
   }
+}
+.checkbox-field {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 1rem;
 }
 
 input {
@@ -238,5 +247,52 @@ textarea {
   &:active {
     filter: drop-shadow(0 4px 3px #0000);
     transform: translateY(0);
+  }
+}
+
+.checkbox {
+  margin: 0.3rem;
+  text-align: left;
+  input[type="checkbox"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+  }
+  label {
+    position: relative;
+    display: inline-block;
+    padding-top: 2px;
+    padding-right: 10px;
+    padding-left: 35px;
+    cursor: pointer;
+    &::before {
+      position: absolute;
+      z-index: -1;
+      top: 0;
+      left: 0;
+      display: block;
+      width: 1.5rem;
+      height: 1.5rem;
+      content: "";
+      border: 2px solid #0099ff;
+    }
+  }
+  input[type="checkbox"] + label::before {
+    border-radius: 4px;
+  }
+  input[type="checkbox"]:checked + label {
+    padding-left: 10px;
+    color: #ffffff;
+  }
+  input[type="checkbox"]:checked + label::before {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #0099ff;
+  }
+  label,
+  label::before {
+    -webkit-transition: 0.25s all ease;
+    transition: 0.25s all ease;
   }
 }

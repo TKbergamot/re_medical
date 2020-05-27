@@ -1,16 +1,19 @@
 class HospitalsController < ApplicationController
   def index
-      @q = Hospital.ransack(params[:q])
-      @hospitals = @q.result(distinct: true)
+    @q = Hospital.ransack(params[:q])
+    @hospitals = @q.result(distinct: true)
+    @top = "医療機関一覧"
+    if params[:q].present?
       if params[:q][:prefecture_eq].present? && params[:q][:departments_id_eq].present?
         @top = params[:q][:prefecture_eq] + "で" + Department.find(params[:q][:departments_id_eq]).name + "が受診できる医療機関"
       elsif params[:q][:prefecture_eq].present?
         @top = params[:q][:prefecture_eq] + "の医療機関"
       elsif params[:q][:departments_id_eq].present?
         @top = Department.find(params[:q][:departments_id_eq]).name + "の受診ができる医療機関"
-      else
-        @top = "医療機関一覧"
       end
+    else
+      @top = "医療機関一覧"
+    end
   end
 
   def show

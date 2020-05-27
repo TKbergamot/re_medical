@@ -6,7 +6,7 @@
           <h1 class="post-info__desease-name"><%= @post.desease_name %></h1>
           <h5 class="post-info__name"><%= @post.patient.family_name + ' ' + @post.patient.first_name %></h5>
           <p class="post-info__time"><%= @post.created_at %></p>
-          <span class="post-info__department"><%= @post.department.name %></span>
+          <span class="post-info__department tag"><%= @post.department.name %></span>
           <p class="post-info__detail"><%= safe_join(@post.detail.split("\n"),tag(:br)) %></p>
           <div class="post-info__refferal">
             <% @post.refferal.each do |r| %>
@@ -19,9 +19,12 @@
             <span class="opinion__toggle">コメントする</span>
             <div class="opinion__form form-toggle text-area__wrapper">
               <%= form_with model: Opinion.new, local: true do |f| %>
-                <%= f.text_area :content, placeholder: "ここに記入してください" %>
-                <%= f.hidden_field :post_id, value: @post.id %>
-              <%= f.submit '送信' %>
+                <div class="field">
+                  <%= f.text_area :content, placeholder: "コメント内容" %>
+                  <%= f.label :content, "コメント内容", class:"label" %>
+                </div>
+                  <%= f.hidden_field :post_id, value: @post.id %>
+              <%= f.submit '送信', class:"button-default" %>
               <% end %>
             </div>
           <% end %>
