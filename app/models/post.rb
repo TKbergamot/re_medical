@@ -4,4 +4,6 @@ class Post < ApplicationRecord
   has_many :opinions
   mount_uploaders :refferal, ImageUploader
   serialize :refferal, JSON
+
+  validates :refferal, :desease_name, :detail, presence: true
 end

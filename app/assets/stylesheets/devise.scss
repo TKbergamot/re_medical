@@ -34,23 +34,75 @@
     display: block;
     content: "";
     position: absolute;
-    width: calc(100% - 3rem);
+    width: 30%;
     height: 0.5rem;
     border-bottom: 1px solid #ccc;
     border-right: 1px solid #ccc;
     bottom: 0;
     right: 1rem;
+    transition: all 0.3s;
   }
+  &:focus-within::before {
+    width: 80%;
+    border-bottom: 1px solid #0099ff;
+    border-right: 1px solid #0099ff;
+  }
+
   &::after {
     display: block;
     content: "";
     position: absolute;
-    width: calc(100% - 3rem);
+    width: 30%;
     height: 0.5rem;
     border-top: 1px solid #ccc;
     border-left: 1px solid #ccc;
     top: 1.5rem;
     left: 1rem;
+    transition: all 0.3s;
+  }
+  &:focus-within::after {
+    width: 80%;
+    border-top: 1px solid #0099ff;
+    border-left: 1px solid #0099ff;
+  }
+}
+
+.field_with_errors {
+  display: contents;
+  & > input {
+    border-color: #d3381c !important;
+  }
+  & > select {
+    border-color: #d3381c !important;
+  }
+  & > .label {
+    color: #d3381c !important;
+  }
+}
+
+#error_explanation {
+  margin: 1rem;
+  & > h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+    &::before {
+      position: absolute;
+      content: "";
+      height: 0.5rem;
+      width: 0.5rem;
+      background: #d3381c;
+      clip-path: polygon(0 0, 60% 0, 100% 50%, 60% 100%, 0 100%);
+      top: 0.5rem;
+      left: -0.75rem;
+    }
+  }
+  & > ul {
+    list-style: none;
+    margin-bottom: 1rem;
+    & > li {
+      color: #d3381c;
+    }
   }
 }
 

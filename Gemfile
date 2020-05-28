@@ -75,6 +75,7 @@ gem 'geocoder'
 gem 'gmaps4rails'
 gem 'jp_prefecture'
 gem 'ransack'
+gem 'enum_help'
 
 group :production do
   gem 'mysql2'

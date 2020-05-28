@@ -13,3 +13,112 @@
     0.5rem 100%
   );
 }
+
+.link {
+  position: relative;
+  color: #ff9800;
+  transition: all 0.3s;
+  &:hover {
+    color: #0099ff;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    height: 2px;
+    width: 0;
+    bottom: 0;
+    left: 0;
+    border-bottom: 1px solid #0099ff;
+    transition: all 0.2s;
+  }
+  &:hover::after {
+    width: 100%;
+  }
+}
+
+.comment-button {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-right: 1rem;
+  position: relative;
+  cursor: pointer;
+  &::before {
+    position: absolute;
+    content: "";
+    width: 1rem;
+    height: 0.7rem;
+    bottom: -0.5rem;
+    left: 0.5rem;
+    background: #ff9800;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    transition: all 0.2s;
+  }
+  &:hover::before {
+    bottom: -1rem;
+  }
+  & > .fa-edit {
+    font-size: 1.5rem;
+    color: #ff9800;
+    transition: all 0.2s;
+  }
+  &:hover > .fa-edit {
+    transform: scale(1.2);
+  }
+}
+
+.footer-link {
+  position: relative;
+  transition: all 0.2s;
+  &:hover {
+    color: #0099ff;
+  }
+  &::before {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 1px;
+    border-bottom: 1px solid #0099ff;
+    transition: all 0.2s;
+  }
+  &:hover::before {
+    width: 100%;
+  }
+}
+
+.post-button {
+  position: relative;
+  font-size: 0.8rem;
+  font-weight: bold;
+  display: inline-block;
+  cursor: pointer;
+  color: lighten(#515151, 30%);
+  padding: 0.2rem 1rem 0.2rem 0.5rem;
+  border: 2px solid lighten(#515151, 30%);
+  border-radius: 2rem;
+  transition: all 0.2s;
+  &:hover {
+    color: #0099ff;
+    border: 2px solid #0099ff;
+  }
+  &::after {
+    display: block;
+    content: "";
+    position: absolute;
+    width: 0.2rem;
+    height: 0.2rem;
+    transform: rotate(135deg);
+    border-top: 2px solid lighten(#515151, 30%);
+    border-right: 2px solid lighten(#515151, 30%);
+    top: calc(50% - 0.13rem);
+    right: 0.5rem;
+    transition: all 0.2s;
+  }
+  &:hover::after {
+    border-top: 2px solid #0099ff;
+    border-right: 2px solid #0099ff;
+    top: 50%;
+  }
+}

@@ -1,4 +1,5 @@
 class PatientsController < ApplicationController
+
   def show
     if patient_signed_in?
       @patient = current_patient

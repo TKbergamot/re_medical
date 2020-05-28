@@ -6,6 +6,8 @@ class Hospital < ApplicationRecord
   geocoded_by :address
   after_validation :geocode, if: :address_changed?
 
+  validates :name, :name_kana, :founder, :founder_kana, :administer, :administer_kana, :post_code, :prefecture, :address, :phone_number, presence: true
+
   include JpPrefecture
   jp_prefecture :prefecture, method_name: :pref
 

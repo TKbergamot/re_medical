@@ -1,6 +1,6 @@
 .hospital-container {
   width: 960px;
-  margin: 3rem auto 0;
+  margin: 3rem auto 10%;
 }
 
 .hospital-main {
@@ -217,7 +217,7 @@
 .hospital-new__box {
   background-color: #fff;
   padding: 2rem 1rem;
-  margin: 0 1rem 1rem 0;
+  margin: 10% 1rem 10% 0;
   border-radius: 0.5rem;
   filter: drop-shadow(1rem 1rem 1rem #0004);
 }
@@ -310,6 +310,8 @@
     margin: 0;
     border-radius: 0;
     filter: none;
+    position: relative;
+    z-index: 1;
   }
 
   #hospital-show__map {

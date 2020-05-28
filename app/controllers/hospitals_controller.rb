@@ -1,4 +1,6 @@
 class HospitalsController < ApplicationController
+  before_action :authenticate_doctor!, only:[:new, :show, :create, :edit, :update, :destroy]
+
   def index
     @q = Hospital.ransack(params[:q])
     @hospitals = @q.result(distinct: true)
@@ -26,10 +28,13 @@ class HospitalsController < ApplicationController
 
   def create
     @hospital = Hospital.new(hospital_params)
-    @hospital.save
-    current_doctor.hospital_id = @hospital.id
-    current_doctor.save
-    redirect_to @hospital
+    if @hospital.save
+      current_doctor.hospital_id = @hospital.id
+      current_doctor.save
+      redirect_to @hospital
+    else
+      render :new
+    end
   end
 
   def edit
@@ -38,8 +43,11 @@ class HospitalsController < ApplicationController
 
   def update
     @hospital = Hospital.find(params[:id])
-    @hospital.update(hospital_params)
-    redirect_to @hospital
+    if @hospital.update(hospital_params)
+      redirect_to @hospital
+    else
+      render :edit
+    end
   end
 
   def destroy

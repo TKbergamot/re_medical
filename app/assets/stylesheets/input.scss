@@ -90,7 +90,7 @@ select {
   align-items: center;
   white-space: pre;
   -webkit-rtl-ordering: logical;
-  background-color: -internal-light-dark-color(white, black);
+  background-color: #fff;
   cursor: default;
   margin: 0em;
   outline: none;
@@ -170,23 +170,36 @@ textarea {
     display: block;
     content: "";
     position: absolute;
-    width: 0.5rem;
+    width: 30%;
     height: 0.5rem;
-    border-bottom: 2px solid #515151;
-    border-right: 2px solid #515151;
+    border-bottom: 1px solid #ccc;
+    border-right: 1px solid #ccc;
     bottom: 0;
     right: 0;
+    transition: all 0.2s;
   }
+  &:focus-within::before {
+    width: 80%;
+    border-bottom: 1px solid #0099ff;
+    border-right: 1px solid #0099ff;
+  }
+
   &::after {
     display: block;
     content: "";
     position: absolute;
-    width: 0.5rem;
+    width: 30%;
     height: 0.5rem;
-    border-top: 2px solid #515151;
-    border-left: 2px solid #515151;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
     top: 0;
     left: 0;
+    transition: all 0.2s;
+  }
+  &:focus-within::after {
+    width: 80%;
+    border-top: 1px solid #0099ff;
+    border-left: 1px solid #0099ff;
   }
 }
 
@@ -295,4 +308,24 @@ textarea {
     -webkit-transition: 0.25s all ease;
     transition: 0.25s all ease;
   }
+}
+
+input:invalid ~ .errorMessage {
+  display: block;
+}
+
+input:invalid ~ .OKMessage {
+  display: none;
+}
+
+input:valid ~ .errorMessage {
+  display: none;
+}
+
+input:valid ~ .OKMessage {
+  display: block;
+}
+
+input:placeholder-shown ~ .messageBox {
+  display: none;
 }

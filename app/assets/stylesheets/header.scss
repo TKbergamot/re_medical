@@ -1,7 +1,6 @@
 .header {
   display: flex;
   z-index: 100;
-  border-bottom: 1px solid #f4f4ff;
   width: 100%;
   position: fixed;
   background: rgba(255, 255, 255, 1);
@@ -24,12 +23,13 @@
 
   &-list {
     display: flex;
+    height: 3rem;
     list-style: none;
 
     &__content {
       text-align: center;
 
-      a {
+      .header-content {
         position: relative;
         display: block;
         padding: 0 1rem;
@@ -85,6 +85,19 @@
         margin-left: auto;
       }
     }
+  }
+}
+
+.top-button {
+  position: relative;
+  display: block;
+  padding: 0 1rem;
+  height: 100%;
+  transition: all 0.3s;
+  background: #0099ff;
+  color: #fff;
+  &:hover {
+    background: #ff9800;
   }
 }
 

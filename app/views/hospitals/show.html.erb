@@ -4,7 +4,7 @@
       <%= image_tag @hospital.image.to_s, class:"hospital-show__image" %>
       <div class="hospital-show__text">
         <h1 class="hospital-show__name"><%= @hospital.name %></h1>
-        <p class="hospital-show__address"><%= @hospital.address %></p>
+        <p class="hospital-show__address"><%= @hospital.prefecture + @hospital.address %></p>
       </div>
     </div>
   </div>
@@ -50,13 +50,12 @@
               handler.getMap().setZoom(17);
             });
           </script>
-          <p><%= @hospital.name %></p>
-          <p><%= @hospital.founder %></p>
-          <p><%= @hospital.administer %></p>
-          <p><i class="fas fa-map-marker-alt"></i> <%= @hospital.post_code %> <%= @hospital.address %></p>
-          <p><i class="fas fa-phone-alt"></i> <%= @hospital.phone_number %></p>
+          <p><i class="fas fa-hospital fa-fw"></i> <%= @hospital.founder %> <%= @hospital.name %></p>
+          <p><i class="fas fa-user-md fa-fw"></i> <%= @hospital.administer %></p>
+          <p><i class="fas fa-map-marker-alt fa-fw"></i> <%= @hospital.post_code + ' ' + @hospital.prefecture + @hospital.address %></p>
+          <p><i class="fas fa-phone-alt fa-fw"></i> <%= @hospital.phone_number %></p>
           <% if @hospital.homepage.present? %>
-            <%= link_to @hospital.homepage do %><i class="fas fa-globe"></i> <%= @hospital.homepage %>
+            <%= link_to @hospital.homepage do %><i class="fas fa-globe fa-fw"></i> <%= @hospital.homepage %>
             <% end %>
           <% end %>
         </div>

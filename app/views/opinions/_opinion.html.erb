@@ -3,7 +3,7 @@
     <%= image_tag opinion.doctor.image.thumb.to_s, class:"opinion__image" %>
     <div class="opinion__name-box">
       <h1 class="opinion__name"><%= link_to hospital_path(opinion.doctor.hospital) do %><%= opinion.doctor.family_name + ' ' + opinion.doctor.first_name %> <small>-<%= opinion.doctor.hospital.name %>-</small><% end %></h1>
-      <p class="opinion__time"><%= opinion.created_at %></p>
+      <p class="opinion__time"><%= opinion.created_at.to_s(:datetime) %></p>
     </div>
   </div>
   <div class="opinion__content-box">
@@ -30,7 +30,7 @@
       <% if comment.class == DoctorComment %>
         <div class="opinion__comment">
           <h1 class="opinion__comment__name"><%= comment.doctor.family_name + ' ' + comment.doctor.first_name %></h1>
-          <p class="opinion__comment__time"><%= comment.created_at %></p>
+          <p class="opinion__comment__time"><%= comment.created_at.to_s(:datetime) %></p>
           <p class="opinion__comment__content"><%= safe_join(comment.content.split("\n"),tag(:br)) %></p>
           <% if doctor_signed_in? %>
             <% if comment.doctor_id == current_doctor.id %>
@@ -52,7 +52,7 @@
       <% elsif comment.class == PatientComment %>
         <div class="opinion__comment">
           <h1 class="opinion__comment__name"><%= comment.patient.family_name + ' ' + comment.patient.first_name %></h1>
-          <p class="opinion__comment__time"><%= comment.created_at %></p>
+          <p class="opinion__comment__time"><%= comment.created_at.to_s(:datetime) %></p>
           <p class="opinion__comment__content"><%= safe_join(comment.content.split("\n"),tag(:br)) %></p>
           <% if patient_signed_in? %>
             <% if comment.patient_id == current_patient.id %>
@@ -74,14 +74,17 @@
       <% end %>
       <script>
         $('.opinion__comment-edit__toggle-<%= comment.id %>').click(function() {
-          $('.opinion__comment-edit__form-<%= comment.id %>').toggle();
+          $('.opinion__comment-edit__form-<%= comment.id %>').slideToggle(10);
         })
       </script>
     <% end %>
   </div>
   <% if doctor_signed_in? %>
     <div class="opinion__comment__toggle-<%= opinion.id %>">
-      <p>コメントする</p>
+      <p class="post-info__comment-box">
+        <span>コメントを投稿する</span>
+        <span class="comment-button"><i class="fas fa-edit"></i></span>
+      </p>
     </div>
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
       <div class="text-area__wrapper">
@@ -97,7 +100,10 @@
     </div>
   <% elsif patient_signed_in? %>
     <div class="opinion__comment__toggle-<%= opinion.id %>">
-      <p>コメントする</p>
+      <p class="post-info__comment-box">
+        <span>コメントを投稿する</span>
+        <span class="comment-button"><i class="fas fa-edit"></i></span>
+      </p>
     </div>
     <div class="opinion__comment__form-<%= opinion.id %> form-toggle">
       <div class="text-area__wrapper">
@@ -117,9 +123,9 @@
 
 <script>
     $('.opinion__comment__toggle-<%= opinion.id %>').click(function() {
-        $('.opinion__comment__form-<%= opinion.id %>').toggle();
+        $('.opinion__comment__form-<%= opinion.id %>').slideToggle(10);
     })
     $('.opinion-edit__toggle-<%= opinion.id %>').click(function() {
-        $('.opinion-edit__form-<%= opinion.id %>').toggle();
+        $('.opinion-edit__form-<%= opinion.id %>').slideToggle(10);
     })
 </script>

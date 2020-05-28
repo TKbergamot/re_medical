@@ -5,23 +5,28 @@
         <div class="post-info">
           <h1 class="post-info__desease-name"><%= @post.desease_name %></h1>
           <h5 class="post-info__name"><%= @post.patient.family_name + ' ' + @post.patient.first_name %></h5>
-          <p class="post-info__time"><%= @post.created_at %></p>
+          <p class="post-info__time"><%= @post.created_at.to_s(:datetime) %></p>
           <span class="post-info__department tag"><%= @post.department.name %></span>
           <p class="post-info__detail"><%= safe_join(@post.detail.split("\n"),tag(:br)) %></p>
           <div class="post-info__refferal">
             <% @post.refferal.each do |r| %>
-              <%= image_tag r.to_s %>
+              <%= link_to r.url, 'data-lightbox' => @post, class:"post-info__lightbox" do %>
+                <%= image_tag r.url %>
+              <% end %>
             <% end %>
           </div>
         </div>
         <% if doctor_signed_in? %>
           <% if Opinion.find_by(post_id: params[:id], doctor_id: current_doctor.id).nil? %>
-            <span class="opinion__toggle">コメントする</span>
+            <p class="post-info__comment-box">
+              <span>セカンドオピニオンを投稿する</span>
+              <span class="opinion__toggle comment-button"><i class="fas fa-edit"></i></span>
+            </p>
             <div class="opinion__form form-toggle text-area__wrapper">
               <%= form_with model: Opinion.new, local: true do |f| %>
                 <div class="field">
-                  <%= f.text_area :content, placeholder: "コメント内容" %>
-                  <%= f.label :content, "コメント内容", class:"label" %>
+                  <%= f.text_area :content, placeholder: "セカンドオピニオン内容" %>
+                  <%= f.label :content, "セカンドオピニオン内容", class:"label" %>
                 </div>
                   <%= f.hidden_field :post_id, value: @post.id %>
               <%= f.submit '送信', class:"button-default" %>
@@ -39,6 +44,6 @@
 
 <script>
     $('.opinion__toggle').click(function() {
-        $('.opinion__form').toggle();
+        $('.opinion__form').slideToggle(10);
     })
 </script>

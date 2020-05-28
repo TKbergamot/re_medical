@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 class PostsController < ApplicationController
+  before_action :authenticate_patient!, only: [:new, :create, :edit, :update, :destroy]
 
   def index
     @q = Post.ransack(params[:q])
@@ -26,8 +27,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.patient_id = current_patient.id
     @post.department_id = 1
-    @post.save
-    redirect_to @post
+    if @post.save
+      redirect_to @post
+    else
+      render :new
+    end
   end
 
   def edit
@@ -36,8 +40,11 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    @post.update(post_params)
-    redirect_to @post
+    if @post.update(post_params)
+      redirect_to @post
+    else
+      render :edit
+    end
   end
 
   def destroy

@@ -1,0 +1,26 @@
+エリアで探す
+<div class="footer-search__prefecture">
+  <dl>
+    <dt>北海道・東北</dt>
+    <dd>
+      <%= link_to '北海道', hospitals_path(params:{q:{prefecture_eq: '北海道'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '青森県', hospitals_path(params:{q:{prefecture_eq: '青森県'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '岩手県', hospitals_path(params:{q:{prefecture_eq: '岩手県'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '宮城県', hospitals_path(params:{q:{prefecture_eq: '宮城県'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '秋田県', hospitals_path(params:{q:{prefecture_eq: '秋田県'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '山形県', hospitals_path(params:{q:{prefecture_eq: '山形県'}}), class:"footer-link" %>
+    </dd>
+    <dd>
+      <%= link_to '福島県', hospitals_path(params:{q:{prefecture_eq: '福島県'}}), class:"footer-link" %>
+    </dd>
+  </dl>

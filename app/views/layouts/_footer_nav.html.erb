@@ -1,18 +1,24 @@
 <div class="footer-nav">
   <ul class="footer-nav__list">
     <li>
-      <%= link_to "セカンドオピニオン依頼", new_post_path %>
+      <%if doctor_signed_in? %>
+        <%= link_to "セカンドオピニオン一覧", posts_path, class:"footer-nav__content" %>
+      <% elsif patient_signed_in? %>
+        <%= link_to "セカンドオピニオン依頼", new_post_path, class:"footer-nav__content" %>
+      <% else %>
+        <%= link_to "セカンドオピニオン一覧", posts_path, class:"footer-nav__content" %>
+      <% end %>
     </li>
     <li>
-      <%= link_to "病院を探す", hospitals_path %>
+      <%= link_to "医療機関を探す", hospitals_path, class:"footer-nav__content" %>
     </li>
     <li>
       <% if doctor_signed_in? %>
-        <%= link_to "マイページ", doctor_path(current_doctor) %>
+        <%= link_to "マイページ", doctor_path(current_doctor), class:"footer-nav__content" %>
       <% elsif patient_signed_in? %>
-        <%= link_to "マイページ", patient_path %>
+        <%= link_to "マイページ", patient_path, class:"footer-nav__content" %>
       <% else %>
-        <%= link_to "ログイン", root_path %>
+        <%= link_to "ログイン", root_path, class:"footer-nav__content" %>
       <% end %>
     </li>
   </ul>

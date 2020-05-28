@@ -5,20 +5,40 @@
     <div class="patient-main__left">
       <div class="patient-info__box">
         <h1 class="patient-info__name"><%= @patient.family_name + ' ' + @patient.first_name %>
-          <small>(<%= @patient.family_name_kana + ' ' + @patient.first_name_kana %>)</small>
+          <small>(<%= @patient.family_name_kana + ' ' + @patient.first_name_kana %>)</small>様
         </h1>
-        <p class="patient-info__birth-date"><%= @patient.date_of_birth %></p>
-        <p clcass="patient-info__gender"><%= @patient.gender %></p>
-    <%# お気に入り病院、投稿一覧を追加 %>
-        <% if patient_signed_in? %>
-          <% if @patient == current_patient %>
-            <%= link_to edit_patient_registration_path do %><p class="post-button">編集</p><% end %>
-          <% end %>
+        <% if @patient.posts.present? %>
+          <div class="patient-info__posts">
+            <h5 class="patient-info__posts-info">セカンドオピニオン依頼一覧</h5>
+            <% @patient.posts.each do |post| %>
+              <%= link_to post_path(post) do %>
+                <div class="patient-info__post">
+                  <%= image_tag post.refferal.first.url, class:"patient-info__refferal" %>
+                  <div class="patient-info__text">
+                    <p class="patient-info__desease-name"><%= post.desease_name %></p>
+                    <p class="patient-info__comment-size">セカンドオピニオン回答数: <%= post.opinions.size %>件</p>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% else %>
+          <p>セカンドオピニオン依頼はまだありません。</p>
         <% end %>
-        <%= link_to new_post_path do %><p class="post-button">新規投稿</p><% end %>
+        <div class="parient-info__detail">
+          <p class="patient-info__birth-date">生年月日：<%= @patient.date_of_birth %></p>
+          <p clcass="patient-info__gender"><%= @patient.gender_i18n %></p>
+          <% if patient_signed_in? %>
+            <% if @patient == current_patient %>
+              <%= link_to edit_patient_registration_path do %><p class="post-button">編集</p><% end %>
+            <% end %>
+          <% end %>
+          <%= link_to new_post_path do %><p class="post-button">新規セカンドオピニオン依頼</p><% end %>
+        </div>
       </div>
     </div>
-      <div class="patient-main__left">
+    <div class="patient-main__left">
+      <%= render 'hospitals/search' %>
     </div>
   </div>
 </div>

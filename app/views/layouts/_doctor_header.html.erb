@@ -1,9 +1,9 @@
 <li class="nav-list__content"><%= link_to root_path, class:"top-title" do %>Re:MEDICAL<% end %></li>
-<li class="nav-list__content"><%= link_to posts_path do %>投稿一覧<% end %></li>
+<li class="nav-list__content"><%= link_to posts_path, class:"header-content" do %>投稿一覧<% end %></li>
 <% if current_doctor.hospital_id.present? %>
-  <li class="nav-list__content"><%= link_to hospital_path(current_doctor.hospital_id) do %>所属病院<% end %></li>
+  <li class="nav-list__content"><%= link_to hospital_path(current_doctor.hospital_id), class:"header-content" do %>所属病院<% end %></li>
 <% else %>
-  <li class="nav-list__content"><%= link_to new_hospital_path do %>所属病院登録<% end %></li>
+  <li class="nav-list__content"><%= link_to new_hospital_path, class:"header-content" do %>所属病院登録<% end %></li>
 <% end %>
-<li class="nav-list__content"><%= link_to doctor_path(current_doctor) do %>マイページ<% end %></li>
-<li class="nav-list__content"><%= link_to destroy_doctor_session_path, method: :delete do %>ログアウト<% end %></li>
+<li class="nav-list__content"><%= link_to doctor_path(current_doctor), class:"top-button" do %>マイページ<% end %></li>
+<li class="nav-list__content"><%= link_to destroy_doctor_session_path, class:"header-content", method: :delete do %>ログアウト<% end %></li>

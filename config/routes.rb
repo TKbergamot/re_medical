@@ -16,7 +16,6 @@ Rails.application.routes.draw do
   }
 
   resource :patient
-  resources :patients
   resources :doctors
   resources :posts, :opinions, :patient_comments, :doctor_comments
   resources :hospitals

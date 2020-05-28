@@ -5,6 +5,9 @@
   <p class="post-form__text">できるだけ詳しくお書きください。</p>
 
   <%= form_with model: Post.new,  local: true do |f| %>
+
+    <%= render "devise/shared/error_messages", resource: @post %>
+
     <div class="field">
       <%= f.file_field :refferal, multiple: true %>
       <%= f.label :refferal, "紹介状、検査資料など（複数可能）", class:"label" %>
@@ -30,5 +33,7 @@
     <div class="field">
       <%= f.submit "セカンドオピニオン依頼", class:"button-default" %>
     </div>
+
   <% end %>
+
 </div>
