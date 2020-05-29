@@ -136,25 +136,25 @@ end
 end
 
 200.times do |n|
-  Opinion.create{
+  Opinion.create(
     content: description,
     post_id: rand(1..100),
-    doctor_id: rand(1..100),
-  }
+    doctor_id: rand(1..100)
+  )
 end
 
 200.times do |n|
-  PatientComment.create{
+  PatientComment.create(
     content: description,
     patient_id: rand(1..50),
     opinion_id: rand(1..200)
-  }
+  )
 end
 
 200.times do |n|
-  DoctorComment.create{
+  DoctorComment.create(
     content: description,
     doctor_id: rand(1..100),
     opinion_id: rand(1..200)
-  }
+  )
 end
