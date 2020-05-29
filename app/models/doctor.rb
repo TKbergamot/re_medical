@@ -10,5 +10,7 @@ class Doctor < ApplicationRecord
   belongs_to :department
   belongs_to :hospital, optional: true
 
+  enum gender: { male: 0, female: 1}
+
   validates :family_name, :first_name, :family_name_kana, :first_name_kana, :gender, :date_of_birth, :registration_number, :registration_date, presence: true
 end

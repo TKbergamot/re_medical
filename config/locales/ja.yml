@@ -4,6 +4,10 @@ ja:
       gender:
         male: 男性
         female: 女性
+    doctor:
+      gender:
+        male: 男性
+        female: 女性
   activerecord:
     attributes:
       patient:
