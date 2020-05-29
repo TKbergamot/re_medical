@@ -102,7 +102,7 @@ end
     gender = 1
   end
 
-  Doctor.create(
+  doctor = Doctor.new(
     email: "dr#{n+1}@dr#{n+1}",
     password: '1qaz2wsx',
     family_name: gimei.last.kanji,
@@ -116,17 +116,18 @@ end
     description: description,
     hospital_id: rand(1..50),
     department_id: rand(1..35),
-    if gender == 0
-      image: open("./db/fixtures/#{ma.sample}")
-    else
-      image: open("./db/fixtures/#{fe.sample}")
-    end
   )
+    if gender == 0
+      doctor.image = open("./db/fixtures/#{ma.sample}")
+    else
+      doctor.image = open("./db/fixtures/#{fe.sample}")
+    end
+  doctor.save
 end
 
 100.times do |n|
   Post.create!(
-    refferal: open("./db/fixtures/#{ref.sample}"),
+    refferal: [open("./db/fixtures/#{ref.sample}")],
     desease_name: desease.sample,
     detail: description,
     patient_id: rand(1..50),
