@@ -1,4 +1,6 @@
 ja:
+  will_paginate:
+    page_gap: "..."
   enums:
     patient:
       gender:

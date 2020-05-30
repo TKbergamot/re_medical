@@ -24,6 +24,7 @@
   .previous_page {
     width: 1.5rem;
     height: 1.5rem;
+    line-height: 1.2rem;
   }
   .next_page {
     display: inline-block;
@@ -51,6 +52,9 @@
     color: $white;
     font-style: normal;
     transform: scale(1.2);
+  }
+  .gap {
+    color: $white;
   }
   .disabled {
     display: none;

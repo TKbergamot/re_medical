@@ -12,7 +12,7 @@
   <div class="post-main">
     <div class="post-main__left">
       <%= render @posts %>
-      <%= will_paginate @posts, previous_label:'&lt ', next_label:' &gt' %>
+      <%= will_paginate @posts, previous_label:'&lt ', next_label:' &gt',inner_window: 1, outer_window: 0 %>
     </div>
     <div class="post-main__right">
       <%= render 'posts/search'%>
