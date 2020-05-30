@@ -2,7 +2,7 @@
   &__box {
     margin: 10% auto;
     width: 450px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.5rem;
     filter: drop-shadow(1rem 1rem 1rem #0004);
     padding: 2rem 1rem;
@@ -70,13 +70,13 @@
 .field_with_errors {
   display: contents;
   & > input {
-    border-color: #d3381c !important;
+    border-color: $danger !important;
   }
   & > select {
-    border-color: #d3381c !important;
+    border-color: $danger !important;
   }
   & > .label {
-    color: #d3381c !important;
+    color: $danger !important;
   }
 }
 
@@ -91,7 +91,7 @@
       content: "";
       height: 0.5rem;
       width: 0.5rem;
-      background: #d3381c;
+      background: $danger;
       clip-path: polygon(0 0, 60% 0, 100% 50%, 60% 100%, 0 100%);
       top: 0.5rem;
       left: -0.75rem;
@@ -101,7 +101,7 @@
     list-style: none;
     margin-bottom: 1rem;
     & > li {
-      color: #d3381c;
+      color: $danger;
     }
   }
 }
@@ -109,7 +109,7 @@
 @media screen and (max-width: 560px) {
   .login-form {
     &__box {
-      margin: auto 0;
+      margin: 4rem 0 1rem;
       width: 100%;
       filter: none;
       padding: 2rem 1rem;

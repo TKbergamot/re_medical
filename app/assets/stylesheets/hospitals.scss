@@ -11,7 +11,7 @@
 .hospital-list {
   display: grid;
   position: relative;
-  background-color: #fff;
+  background-color: $white;
   padding: 1.5rem 1rem;
   margin: 0 1rem 2rem 0;
   grid-template-columns: 64px 8fr 1fr;
@@ -22,7 +22,7 @@
     width: 4rem;
     height: 3rem;
     object-fit: contain;
-    background-color: #fff;
+    background-color: $white;
   }
   &__text {
     margin: auto 1rem;
@@ -35,7 +35,7 @@
       padding-left: 0.5rem;
       padding-bottom: -0.3rem;
       margin-bottom: 0.3rem;
-      border-left: 4px solid #0099ff;
+      border-left: 4px solid $primary;
     }
     &__address {
       font-size: 0.9rem;
@@ -62,15 +62,15 @@
     width: 1rem;
     height: 1rem;
     transform: rotate(45deg);
-    border-top: 2px solid #ff9800;
-    border-right: 2px solid #ff9800;
+    border-top: 2px solid $secondary;
+    border-right: 2px solid $secondary;
     top: calc(50% - 0.6rem);
     right: 2rem;
     transition: all 0.2s;
   }
   &:hover::after {
-    border-top: 2px solid #0099ff;
-    border-right: 2px solid #0099ff;
+    border-top: 2px solid $primary;
+    border-right: 2px solid $primary;
     right: 1.5rem;
   }
   &:hover {
@@ -101,7 +101,7 @@
     width: 4rem;
     height: 4rem;
     object-fit: contain;
-    background-color: #fff;
+    background-color: $white;
     margin: auto auto;
     border-radius: 50%;
   }
@@ -111,14 +111,14 @@
     margin: auto 2rem;
   }
   &__name {
-    color: #fff;
+    color: $white;
     font-size: 1.2rem;
     letter-spacing: 0.1rem;
     font-weight: normal;
     padding-bottom: 0.3rem;
   }
   &__address {
-    color: #fff;
+    color: $white;
     font-size: 1rem;
     letter-spacing: 0.05rem;
     font-weight: normal;
@@ -131,11 +131,12 @@
   }
 
   &__detail {
-    background-color: #fff;
+    background-color: $white;
     padding: 2rem 1rem;
     margin: 0 1rem 1rem 0;
     filter: drop-shadow(1rem 1rem 1rem #0004);
     border-radius: 0.5rem;
+    position: relative;
   }
 
   &__department {
@@ -145,7 +146,7 @@
   &__doctors {
     margin: 2rem 0;
     &-info {
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
       padding-bottom: 0.2rem;
     }
@@ -176,15 +177,15 @@
       width: 1rem;
       height: 1rem;
       transform: rotate(45deg);
-      border-top: 2px solid #ff9800;
-      border-right: 2px solid #ff9800;
+      border-top: 2px solid $secondary;
+      border-right: 2px solid $secondary;
       top: calc(50% - 0.6rem);
       right: 2rem;
       transition: all 0.2s;
     }
     &:hover::after {
-      border-top: 2px solid #0099ff;
-      border-right: 2px solid #0099ff;
+      border-top: 2px solid $primary;
+      border-right: 2px solid $primary;
       right: 1.5rem;
     }
   }
@@ -192,7 +193,7 @@
   &__info {
     margin: 2rem 0;
     &-text {
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
       padding-bottom: 0.2rem;
       margin-bottom: 0.5rem;
@@ -202,22 +203,29 @@
     }
     a {
       padding-left: calc(0.5rem + 2px);
-      color: #0099ff;
+      color: $primary;
     }
+  }
+  &__edit {
+    position: absolute;
+    bottom: 1rem;
+    right: 2rem;
   }
 }
 
 .hospital-search__container {
-  background-color: #fff;
+  background-color: $white;
+  position: sticky;
+  top: 4rem;
   padding: 2rem 0;
   border-radius: 0.5rem;
   filter: drop-shadow(1rem 1rem 1rem #0004);
 }
 
 .hospital-new__box {
-  background-color: #fff;
+  background-color: $white;
   padding: 2rem 1rem;
-  margin: 10% 1rem 10% 0;
+  margin: 1rem 1rem 10% 0;
   border-radius: 0.5rem;
   filter: drop-shadow(1rem 1rem 1rem #0004);
 }
@@ -226,10 +234,20 @@
   height: 400px;
 }
 
+@media screen and (max-width: 960px) {
+  .hospital-container {
+    width: 100%;
+  }
+
+  .hospital-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .hospital-container {
     width: 100%;
-    margin: 0;
   }
 
   .hospital-main {
@@ -239,7 +257,7 @@
 
   .hospital-list {
     padding: 1.5rem 1rem;
-    margin: 0 0 2rem 0;
+    margin: 0 0 1rem 0;
     border-radius: 0;
     &__text {
       &__name {
@@ -287,9 +305,9 @@
     }
 
     &__detail {
-      background-color: #fff;
+      background-color: $white;
       padding: 2rem 1rem;
-      margin: 0;
+      margin: 0 0 1rem 0;
       filter: none;
       border-radius: 0;
     }
@@ -305,9 +323,9 @@
   }
 
   .hospital-new__box {
-    background-color: #fff;
+    background-color: $white;
     padding: 2rem 1rem;
-    margin: 0;
+    margin: 0 0 1rem 0;
     border-radius: 0;
     filter: none;
     position: relative;
@@ -321,5 +339,6 @@
   .hospital-search__container {
     border-radius: 0;
     filter: none;
+    margin-bottom: 1rem;
   }
 }

@@ -77,6 +77,7 @@ gem 'jp_prefecture'
 gem 'ransack'
 gem 'enum_help'
 gem 'gimei'
+gem 'rails_admin'
 
 group :production do
   gem 'mysql2'

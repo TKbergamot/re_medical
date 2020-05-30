@@ -4,10 +4,12 @@
       <% if doctor_signed_in? %>
         <%= render '/layouts/doctor_header' %>
       <% elsif patient_signed_in? %>
-        <%= render '/layouts/patient_header'%>
+        <%= render '/layouts/patient_header' %>
       <% else %>
-        <%= render '/layouts/guest_header'%>
+        <%= render '/layouts/guest_header' %>
       <% end %>
     </ul>
   </nav>
+  <%= link_to root_path, class:"header-logo" do %>Re:MEDICAL<% end %>
+  <%= render 'layouts/hamburger_menu' %>
 </header>

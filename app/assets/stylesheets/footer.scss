@@ -1,6 +1,6 @@
 .footer {
-  background-color: #fff;
-  border-top: 2px solid #ccc;
+  background-color: $white;
+  border-top: 2px solid $gray;
   font-family: Lato;
   letter-spacing: 0.1rem;
   margin-top: auto;
@@ -37,7 +37,7 @@
       content: "";
       height: 1.5rem;
       width: 2px;
-      background-color: #0099ff;
+      background-color: $primary;
       top: 0;
       left: -0.5rem;
     }
@@ -60,7 +60,7 @@
     padding: 0.5rem;
     position: relative;
     &:hover {
-      color: #fff;
+      color: $white;
     }
     &::before {
       position: absolute;
@@ -68,7 +68,7 @@
       content: "";
       width: 1.6rem;
       height: 1.6rem;
-      background: #ff9800;
+      background: $secondary;
       top: 0.25rem;
       left: 0;
       transition: all 0.3s;
@@ -82,18 +82,18 @@
       content: "";
       width: 1.5rem;
       height: 0.25rem;
-      background: #fff;
+      background: $white;
       bottom: 0.25rem;
-      border-top: 2px solid #fff;
+      border-top: 2px solid $white;
       left: 0;
       transition: all 0.3s;
     }
     &:hover::after {
-      background: #ff9800;
+      background: $secondary;
       width: 100%;
     }
     &:first-letter {
-      color: #fff;
+      color: $white;
       font-weight: bold;
       transition: all 0.3s;
     }
@@ -109,14 +109,22 @@
   }
 }
 
-@media screen and (max-width: 560px) {
-  .footer {
-    background-color: #fff;
-    border-top: 2px solid #ccc;
-    font-family: Lato;
-    letter-spacing: 0.1rem;
-    margin-top: auto;
-    text-align: center;
+@media screen and (max-width: 960px) {
+  .footer-contents {
+    width: 100%;
+    margin: 5% auto;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  @media screen and (max-width: 560px) {
+    .footer {
+      background-color: $white;
+      border-top: 2px solid $gray;
+      font-family: Lato;
+      letter-spacing: 0.1rem;
+      margin-top: auto;
+      text-align: center;
+    }
   }
 
   .footer-contents {

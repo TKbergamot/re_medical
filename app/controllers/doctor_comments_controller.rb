@@ -1,15 +1,6 @@
 class DoctorCommentsController < ApplicationController
   before_action :authenticate_doctor!
 
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
     doctor_comment = DoctorComment.new(doctor_comment_params)
     doctor_comment.doctor_id = current_doctor.id

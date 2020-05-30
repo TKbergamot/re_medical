@@ -1,0 +1,106 @@
+.burger-title {
+  font-family: Lato;
+  font-size: 2rem;
+  font-weight: 300;
+  letter-spacing: 0.1rem;
+  margin-bottom: 2rem;
+}
+
+.burger-nav {
+  position: fixed;
+  right: -21rem;
+  top: 0;
+  width: 20rem;
+  height: 100vh;
+  padding-top: 3rem;
+  background-color: #fff;
+  transition: all 0.6s;
+  z-index: 200;
+  overflow-y: auto;
+}
+
+.burger-nav {
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  &__item {
+    text-align: center;
+    padding: 0 14px;
+    a {
+      display: block;
+      padding: 8px 0;
+      border-bottom: 1px solid #eee;
+      text-decoration: none;
+      color: #111;
+      transition: 0.2s;
+      &:hover {
+        background-color: #eee;
+      }
+    }
+  }
+}
+
+.hamburger {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  height: 3rem;
+  cursor: pointer;
+  z-index: 300;
+  &__line {
+    position: absolute;
+    left: 0.5rem;
+    width: 2rem;
+    height: 2px;
+    background: $text;
+    transition: all 0.6s;
+    &-1 {
+      top: 1rem;
+    }
+    &-2 {
+      top: 1.5rem;
+    }
+    &-3 {
+      top: 2rem;
+    }
+  }
+}
+
+.black-bg {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  background-color: #000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.6s;
+  cursor: pointer;
+}
+
+.nav-open {
+  .burger-nav {
+    right: 0;
+  }
+  .black-bg {
+    opacity: 0.8;
+    visibility: visible;
+  }
+  .hamburger__line-1 {
+    transform: rotate(45deg);
+    top: 20px;
+  }
+  .hamburger__line-2 {
+    width: 0;
+    left: 50%;
+  }
+  .hamburger__line-3 {
+    transform: rotate(-45deg);
+    top: 20px;
+  }
+}

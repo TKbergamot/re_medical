@@ -12,12 +12,9 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require autosize
 //= require activestorage
 //= require underscore
 //= require gmaps/google
 //= require jquery.jpostal
 //= require_tree .
-
-$(function () {
-  autosize($("textarea"));
-});

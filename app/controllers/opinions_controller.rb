@@ -1,13 +1,5 @@
 class OpinionsController < ApplicationController
   before_action :authenticate_doctor!
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
 
   def create
     opinion = Opinion.new(opinion_params)

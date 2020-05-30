@@ -2,7 +2,7 @@
   &__box {
     margin: 10% auto;
     width: 450px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.5rem;
     filter: drop-shadow(1rem 1rem 1rem #0004);
     padding: 2rem 1rem;
@@ -33,7 +33,7 @@
         top: -0.3rem;
         width: 40%;
         height: 2px;
-        background-color: #ff9800;
+        background-color: $secondary;
       }
       &::after {
         position: absolute;
@@ -42,7 +42,7 @@
         bottom: -0.3rem;
         width: 40%;
         height: 2px;
-        background-color: #ff9800;
+        background-color: $secondary;
       }
     }
   }

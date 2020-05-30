@@ -1,15 +1,6 @@
 class PatientCommentsController < ApplicationController
   before_action :authenticate_patient!
 
-  def index
-  end
-
-  def show
-  end
-
-  def new
-  end
-
   def create
     patient_comment = PatientComment.new(patient_comment_params)
     patient_comment.patient_id = current_patient.id

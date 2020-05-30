@@ -21,7 +21,7 @@
 .patient-info {
   &__box {
     position: relative;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.5rem;
     padding: 2rem 1rem 2rem;
     margin: 0 1rem 1rem 0;
@@ -35,12 +35,17 @@
     height: 12rem;
     border-radius: 50%;
     padding: 0.5rem;
-    background-color: #fff;
+    background-color: $white;
+  }
+  &__edit {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
   }
   &__name {
     font-size: 1rem;
     font-weight: bold;
-    border-left: 2px solid #0099ff;
+    border-left: 2px solid $primary;
     padding-left: 0.5rem;
   }
   &__description {
@@ -52,7 +57,7 @@
   &__posts {
     margin: 2rem 0;
     &-info {
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
       padding-bottom: 0.2rem;
     }
@@ -75,17 +80,24 @@
       width: 1rem;
       height: 1rem;
       transform: rotate(45deg);
-      border-top: 2px solid #ff9800;
-      border-right: 2px solid #ff9800;
+      border-top: 2px solid $secondary;
+      border-right: 2px solid $secondary;
       top: calc(50% - 0.6rem);
       right: 2rem;
       transition: all 0.2s;
     }
     &:hover::after {
-      border-top: 2px solid #0099ff;
-      border-right: 2px solid #0099ff;
+      border-top: 2px solid $primary;
+      border-right: 2px solid $primary;
       right: 1.5rem;
     }
+  }
+  &__none {
+    display: inline-block;
+    text-align: center;
+    width: 100%;
+    height: 4rem;
+    padding-top: 1rem;
   }
   &__refferal {
     width: 4rem;
@@ -104,10 +116,19 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .patient-container {
+    width: 100%;
+  }
+  .patient-main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .patient-container {
     width: 100%;
-    margin: 0;
   }
   .patient-main {
     display: grid;
@@ -135,12 +156,12 @@
       height: 12rem;
       border-radius: 50%;
       padding: 0.5rem;
-      background-color: #fff;
+      background-color: $white;
     }
     &__name {
       font-size: 1rem;
       font-weight: bold;
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
     }
     &__description {
@@ -152,7 +173,7 @@
     &__hospitals {
       margin: 2rem 0;
       &-info {
-        border-left: 2px solid #0099ff;
+        border-left: 2px solid $primary;
         padding-left: 0.5rem;
         padding-bottom: 0.2rem;
       }

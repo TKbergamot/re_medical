@@ -1,0 +1,52 @@
+  <nav class="burger-nav">
+    <ul class="burger-nav__list">
+      <li class="burger-nav__item burger-title">Re:MEDICAL</li>
+      <% if doctor_signed_in? %>
+        <li class="burger-nav__item"><%= link_to posts_path, class:"header-content" do %>セカンドオピニオン依頼一覧<% end %></li>
+        <li class="burger-nav__item"><%= link_to hospitals_path, class:"header-content" do %>医療機関一覧<% end %></li>
+        <% if current_doctor.hospital_id.present? %>
+          <li class="burger-nav__item"><%= link_to hospital_path(current_doctor.hospital_id), class:"header-content" do %>所属医療機関<% end %></li>
+        <% else %>
+          <li class="burger-nav__item"><%= link_to new_hospital_path, class:"header-content" do %>所属医療機関登録<% end %></li>
+        <% end %>
+        <li class="burger-nav__item"><%= link_to doctor_path(current_doctor), class:"top-button" do %>マイページ<% end %></li>
+        <li class="burger-nav__item"><%= link_to destroy_doctor_session_path, class:"header-content", method: :delete do %>ログアウト<% end %></li>
+      <% elsif patient_signed_in? %>
+        <li class="burger-nav__item"><%= link_to new_post_path, class:"header-content" do %>新規セカンドオピニオン依頼<% end %></li>
+        <li class="burger-nav__item"><%= link_to posts_path, class:"header-content" do %>セカンドオピニオン依頼一覧<% end %></li>
+        <li class="burger-nav__item"><%= link_to hospitals_path, class:"header-content" do %>医療機関一覧<% end %></li>
+        <li class="burger-nav__item"><%= link_to patient_path, class:"top-button" do %>マイページ<% end %></li>
+        <li class="burger-nav__item"><%= link_to destroy_patient_session_path, class:"header-content", method: :delete do %>ログアウト<% end %></li>
+      <% else %>
+        <li class="burger-nav__item"><%= link_to about_path, class:"header-content" do %>このサイトについて<% end %></li>
+        <li class="burger-nav__item"><%= link_to posts_path, class:"header-content" do %>セカンドオピニオン依頼一覧<% end %></li>
+        <li class="burger-nav__item"><%= link_to hospitals_path, class:"header-content" do %>医療機関一覧<% end %></li>
+        <li class="burger-nav__item"><%= link_to new_patient_session_path, class:"header-content" do %>ログイン<% end %></li>
+        <li class="burger-nav__item"><%= link_to new_patient_registration_path, class:"top-button" do %>新規登録<% end %></li>
+        <li class="burger-nav__item"><%= link_to new_doctor_session_path, class:"header-content" do %>医療機関の方<% end %></li>
+
+      <% end %>
+    </ul>
+  </nav>
+  <div class="hamburger" id="js-hamburger">
+    <span class="hamburger__line hamburger__line-1"></span>
+    <span class="hamburger__line hamburger__line-2"></span>
+    <span class="hamburger__line hamburger__line-3"></span>
+  </div>
+  <div class="black-bg" id="js-black-bg"></div>
+
+<script>
+  function toggleNav() {
+    var body = document.body;
+    var hamburger = document.getElementById("js-hamburger");
+    var blackBg = document.getElementById("js-black-bg");
+
+    hamburger.addEventListener("click", function () {
+      body.classList.toggle("nav-open");
+    });
+    blackBg.addEventListener("click", function () {
+      body.classList.remove("nav-open");
+    });
+  }
+  toggleNav();
+</script>

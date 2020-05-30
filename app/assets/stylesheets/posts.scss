@@ -9,17 +9,18 @@
 }
 
 .post-box {
-  background-color: #fff;
+  background-color: $white;
   border-radius: 0.5rem;
-  margin: 10% 1rem 10% 0;
+  margin: 1rem 1rem 10% 0;
   padding: 2rem 1rem;
   filter: drop-shadow(1rem 1rem 1rem #0004);
+  position: relative;
 }
 
 .post-info {
   &__desease-name {
     font-size: 1rem;
-    border-left: 2px solid #0099ff;
+    border-left: 2px solid $primary;
     padding-left: 0.5rem;
   }
   &__name {
@@ -28,11 +29,11 @@
   &__time {
     text-align: right;
     font-size: 0.9rem;
-    color: lighten(#515151, 30%);
+    color: $text-light;
     margin-right: 1rem;
   }
   &__department {
-    color: #fff;
+    color: $white;
     font-size: 0.8rem;
     font-weight: bold;
     letter-spacing: 0.05rem;
@@ -63,10 +64,15 @@
   &__comment-box {
     text-align: right;
   }
+  &__edit {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+  }
 }
 
 .post-search__container {
-  background-color: #fff;
+  background-color: $white;
   padding: 2rem 0;
   border-radius: 0.5rem;
   filter: drop-shadow(1rem 1rem 1rem #0004);
@@ -78,7 +84,7 @@
 
 .post-index {
   &__box {
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.5rem;
     margin: 0 1rem 2rem 0;
     padding: 2rem 1rem;
@@ -96,7 +102,7 @@
       height: 1rem;
       transition: all 0.3s;
       clip-path: polygon(0 0.9rem, 100% 0.9rem, 100% 100%, 0 100%);
-      background: #ff9800;
+      background: $secondary;
       opacity: 0;
     }
     &:hover::before {
@@ -128,7 +134,7 @@
   &__box {
     margin: 10% auto;
     width: 450px;
-    background-color: #fff;
+    background-color: $white;
     border-radius: 0.5rem;
     filter: drop-shadow(1rem 1rem 1rem #0004);
     padding: 2rem 1rem;
@@ -137,7 +143,7 @@
   &__icon {
     width: 100%;
     text-align: center;
-    color: #ff9800;
+    color: $secondary;
   }
 
   &__title {
@@ -154,10 +160,19 @@
   }
 }
 
+@media screen and (max-width: 960px) {
+  .post-container {
+    width: 100%;
+  }
+
+  .post-main {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .post-container {
     width: 100%;
-    margin: 0;
   }
 
   .post-main {
@@ -166,7 +181,7 @@
 
   .post-box {
     border-radius: 0;
-    margin: 0;
+    margin: 1rem 0;
     padding: 2rem 1rem;
     filter: none;
   }
@@ -174,7 +189,7 @@
   .post-info {
     &__desease-name {
       font-size: 1rem;
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
     }
     &__name {
@@ -183,7 +198,7 @@
     &__time {
       text-align: right;
       font-size: 0.9rem;
-      color: lighten(#515151, 30%);
+      color: $text-light;
       margin-right: 1rem;
     }
     &__detail {
@@ -211,7 +226,7 @@
   .post-index {
     &__box {
       border-radius: 0;
-      margin: 0;
+      margin: 0 0 1rem 0;
       filter: none;
     }
     &__refferal {
@@ -236,5 +251,10 @@
       padding: 2rem 1rem;
       filter: none;
     }
+  }
+  .post-search__container {
+    border-radius: 0;
+    filter: none;
+    margin-bottom: 1rem;
   }
 }

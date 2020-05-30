@@ -59,6 +59,13 @@
             <% end %>
           <% end %>
         </div>
+        <% if doctor_signed_in?%>
+          <% if @hospital.doctors.where(id: current_doctor.id).present? %>
+            <%= link_to edit_hospital_path(@hospital), class:"hospital-show__edit" do %>
+              <p class="icon-round"><i class=" fas fa-wrench"></i></p>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="hospital-main__right">

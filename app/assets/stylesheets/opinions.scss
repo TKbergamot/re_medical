@@ -1,6 +1,6 @@
 .opinion {
   &-box {
-    border-top: 1px solid #ccc;
+    border-top: 1px solid $gray;
     padding-top: 2rem;
     margin-top: 1rem;
   }
@@ -18,13 +18,13 @@
   }
   &__name {
     font-size: 1rem;
-    border-left: 2px solid #0099ff;
+    border-left: 2px solid $primary;
     padding-left: 0.5rem;
     margin-left: 0.5rem;
   }
   &__time {
     font-size: 0.9rem;
-    color: lighten(#515151, 30%);
+    color: $text-light;
     margin-left: 1rem;
   }
 
@@ -61,12 +61,12 @@
     }
     &__name {
       font-size: 1rem;
-      border-left: 2px solid #0099ff;
+      border-left: 2px solid $primary;
       padding-left: 0.5rem;
     }
     &__time {
       font-size: 0.9rem;
-      color: lighten(#515151, 30%);
+      color: $text-light;
       text-align: right;
     }
 

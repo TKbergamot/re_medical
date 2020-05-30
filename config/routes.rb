@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get 'about', to: 'home#about'
   devise_for :doctors, controolers: {
@@ -15,10 +16,10 @@ Rails.application.routes.draw do
     registrations: 'patients/registrations'
   }
 
-  resource :patient
-  resources :doctors
-  resources :posts, :opinions, :patient_comments, :doctor_comments
+  resource :patient, only: %i[show]
+  resources :doctors, only: %i[show]
+  resources :posts
+  resources :opinions, :patient_comments, :doctor_comments, only: %i[create update destroy]
   resources :hospitals
-  resources :departments
 
 end

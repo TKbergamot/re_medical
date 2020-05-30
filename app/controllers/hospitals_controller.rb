@@ -1,5 +1,5 @@
 class HospitalsController < ApplicationController
-  before_action :authenticate_doctor!, only:[:new, :show, :create, :edit, :update, :destroy]
+  before_action :authenticate_doctor!, only:[:new, :create, :edit, :update, :destroy]
 
   def index
     @q = Hospital.ransack(params[:q])
@@ -39,6 +39,9 @@ class HospitalsController < ApplicationController
 
   def edit
     @hospital = Hospital.find(params[:id])
+    if @hospital.doctors.where(id: current_doctor.id).empty?
+      redirect_to @hospital
+    end
   end
 
   def update

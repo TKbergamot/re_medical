@@ -4,7 +4,7 @@
   <div class="doctor-main">
     <div class="doctor-main__left">
       <div class="doctor-info__box">
-        <%= image_tag @doctor.image.to_s,class:'doctor-info__image' %>
+        <%= image_tag @doctor.image.url, class:'doctor-info__image' %>
         <h1 class="doctor-info__name"><%= @doctor.family_name + ' ' + @doctor.first_name %>
           <small>(<%= @doctor.family_name_kana + ' ' + @doctor.first_name_kana %>)</small> 医師
         </h1>
@@ -23,9 +23,11 @@
           <p>はいってへんが</p>
         <% end %>
         <p class="doctor-info__department tag"><%= @doctor.department.name %></p>
-        <% if doctor_signed_in? %>
+        <% if doctor_signed_in?%>
           <% if @doctor == current_doctor %>
-            <%= link_to edit_doctor_registration_path do %>編集<% end %>
+            <%= link_to edit_doctor_registration_path, class:"doctor-info__edit" do %>
+              <p class="icon-round"><i class=" fas fa-user-edit"></i></p>
+            <% end %>
           <% end %>
         <% end %>
       </div>

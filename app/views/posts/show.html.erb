@@ -35,15 +35,23 @@
           <% end %>
         <% end %>
         <%= render @post.opinions %>
+        <% if patient_signed_in? %>
+          <% if @post.patient == current_patient %>
+            <%= link_to edit_post_path(@post), class:"post-info__edit" do %>
+              <p class="icon-round"><i class=" fas fa-user-edit"></i></p>
+            <% end %>
+          <% end %>
+        <% end %>
       </div>
     </div>
     <div class="post-main__right">
+      <%= render 'posts/search' %>
     </div>
   </div>
 </div>
 
 <script>
-    $('.opinion__toggle').click(function() {
-        $('.opinion__form').slideToggle(10);
-    })
+  $('.opinion__toggle').click(function() {
+      $('.opinion__form').slideToggle(10);
+  })
 </script>
