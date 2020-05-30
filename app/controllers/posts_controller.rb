@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @q = Post.ransack(params[:q])
-    @posts = @q.result(distinct: true)
+    @posts = @q.result(distinct: true).order(id: "desc").paginate(page: params[:page], per_page: 5)
     @top = "オピニオン依頼一覧"
     if params[:q].present?
       if params[:q][:department_id_eq].present?

@@ -3,7 +3,7 @@ class HospitalsController < ApplicationController
 
   def index
     @q = Hospital.ransack(params[:q])
-    @hospitals = @q.result(distinct: true)
+    @hospitals = @q.result(distinct: true).order(id: 'desc').paginate(page: params[:page], per_page: 5)
     @top = "医療機関一覧"
     if params[:q].present?
       if params[:q][:prefecture_eq].present? && params[:q][:departments_id_eq].present?

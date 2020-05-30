@@ -78,6 +78,7 @@ gem 'ransack'
 gem 'enum_help'
 gem 'gimei'
 gem 'rails_admin'
+gem 'will_paginate'
 
 group :production do
   gem 'mysql2'

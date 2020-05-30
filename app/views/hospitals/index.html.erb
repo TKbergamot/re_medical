@@ -13,6 +13,7 @@
   <div class="hospital-main">
     <div class="hospital-main__left">
       <%= render @hospitals %>
+      <%= will_paginate @hospitals, previous_label:'&lt ', next_label:' &gt' %>
     </div>
     <div class="hospital-main__right">
       <%= render 'hospitals/search' %>

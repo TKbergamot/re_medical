@@ -59,10 +59,16 @@
             <% end %>
           <% end %>
         </div>
-        <% if doctor_signed_in?%>
+        <% if doctor_signed_in? %>
           <% if @hospital.doctors.where(id: current_doctor.id).present? %>
             <%= link_to edit_hospital_path(@hospital), class:"hospital-show__edit" do %>
               <p class="icon-round"><i class=" fas fa-wrench"></i></p>
+            <% end %>
+          <% end %>
+          <% if current_doctor.hospital.nil? %>
+            <%= form_with model: current_doctor, local: true do |f| %>
+              <%= f.hidden_field :hospital_id, value: @hospital.id %>
+              <%= f.submit '所属する', class:"button-default" %>
             <% end %>
           <% end %>
         <% end %>

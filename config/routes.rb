@@ -17,7 +17,7 @@ Rails.application.routes.draw do
   }
 
   resource :patient, only: %i[show]
-  resources :doctors, only: %i[show]
+  resources :doctors, only: %i[show update]
   resources :posts
   resources :opinions, :patient_comments, :doctor_comments, only: %i[create update destroy]
   resources :hospitals
