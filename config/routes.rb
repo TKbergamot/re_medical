@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :admin
+  devise_for :admins, only: %i[sign_in sign_out session]
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get 'about', to: 'home#about'

@@ -1,0 +1,21 @@
+<div class="login-form__box">
+  <h1 class="login-form__title">Re:MEDICAL</h1>
+  <p class="login-form__text">SECOND OPINION MORE EASILY.</p>
+  <p class="login-form__text">管理者ページ</p>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Mailaddress" %>
+      <%= f.label :email, "メールアドレス", class:"label" %>
+    </div>
+
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
+      <%= f.label :password, "パスワード", class:"label" %>
+    </div>
+
+    <div class="field" style="margin-top:2rem;">
+      <%= f.submit "ログイン", class:"button-default" %>
+    </div>
+  <% end %>
+</div>
