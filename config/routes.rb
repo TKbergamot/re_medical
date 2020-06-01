@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  devise_for :admin
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   root 'home#index'
   get 'about', to: 'home#about'
+  get '/infiniteScrolling', to: "posts#infiniteScrolling"
+
   devise_for :doctors, controolers: {
     sessions: 'doctors/sessions',
     passwords: 'doctors/passwords',

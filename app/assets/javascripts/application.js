@@ -17,4 +17,5 @@
 //= require underscore
 //= require gmaps/google
 //= require jquery.jpostal
+//= require infinite-scroll.pkgd.min
 //= require_tree .

@@ -12,6 +12,8 @@ class ApplicationController < ActionController::Base
       doctor_path(current_doctor)
     when Patient
       patient_path
+    when Admin
+      rails_admin_path
     end
   end
 

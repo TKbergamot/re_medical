@@ -1,18 +1,20 @@
-<%= link_to post_path(post) do %>
-  <div class="post-index__box">
-      <div class="post-info">
-        <h1 class="post-info__desease-name"><%= post.desease_name %></h1>
-        <h5 class="post-info__name"><%= post.patient.family_name + ' ' + post.patient.first_name %></h5>
-        <p class="post-info__time"><%= post.created_at.to_s(:datetime) %></p>
-        <span class="post-info__department tag"><%= post.department.name %></span>
-        <p class="post-info__detail"><%= post.detail %></p>
-        <div class="post-index__refferal">
-          <%= image_tag post.refferal.first.url %>
+<div class="post">
+  <%= link_to post_path(post) do %>
+    <div class="post-index__box">
+        <div class="post-info">
+          <h1 class="post-info__desease-name"><%= post.desease_name %></h1>
+          <h5 class="post-info__name"><%= post.patient.family_name + ' ' + post.patient.first_name %></h5>
+          <p class="post-info__time"><%= post.created_at.to_s(:datetime) %></p>
+          <span class="post-info__department tag"><%= post.department.name %></span>
+          <p class="post-info__detail"><%= post.detail %></p>
+          <div class="post-index__refferal">
+            <%= image_tag post.refferal.first.url %>
+          </div>
         </div>
+      <div class="post-bottom">
+        <div class="post-bottom__comment-size"><i class="far fa-comment"></i>　<%= post.opinions.size %></div>
+        <div class="post-bottom__button"><div class="post-button">みる</div></div>
       </div>
-    <div class="post-bottom">
-      <div class="post-bottom__comment-size"><i class="far fa-comment"></i>　<%= post.opinions.size %></div>
-      <div class="post-bottom__button"><div class="post-button">みる</div></div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
